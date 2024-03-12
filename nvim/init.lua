@@ -44,8 +44,8 @@ require('lazy').setup {
       local which_key = require 'which-key'
       which_key.setup()
       which_key.register {
-        ['<C-f>'] = { name = 'Telescope', _ = 'which_key_ignore' },
-        ['<C-n>'] = { name = 'Harpoon', _ = 'which_key_ignore' },
+        ['<C-f>'] = { name = 'Telescope' },
+        ['<C-n>'] = { name = 'Harpoon' },
       }
     end,
   },
