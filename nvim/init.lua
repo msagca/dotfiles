@@ -34,7 +34,17 @@ require('lazy').setup {
     'stevearc/conform.nvim',
     opts = {
       format_after_save = { lsp_fallback = true },
-      formatters_by_ft = { lua = { 'stylua' } },
+      formatters_by_ft = {
+        css = { 'prettier' },
+        html = { 'prettier' },
+        javascript = { 'prettier' },
+        json = { 'prettier' },
+        lua = { 'stylua' },
+        markdown = { 'prettier' },
+        scss = { 'prettier' },
+        typescript = { 'prettier' },
+        yaml = { 'prettier' },
+      },
     },
   },
   {
