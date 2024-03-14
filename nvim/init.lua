@@ -5,12 +5,13 @@ vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
 vim.o.background = 'light'
+vim.o.clipboard = 'unnamedplus'
+vim.o.hlsearch = true
+vim.o.ignorecase = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.shell = 'nu'
 vim.o.termguicolors = true
-vim.opt.clipboard = 'unnamedplus'
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.number = true
-vim.opt.relativenumber = true
 vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -21,6 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   { 'lewis6991/gitsigns.nvim', opts = {} },
   { 'numToStr/Comment.nvim', opts = {} },
+  { 'windwp/nvim-autopairs', opts = {} },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
