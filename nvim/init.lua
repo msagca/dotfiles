@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 vim.cmd 'set autochdir'
 vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
 vim.keymap.set('n', 'H', '^')
@@ -12,7 +13,6 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.shell = 'nu'
 vim.o.termguicolors = true
-vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -20,7 +20,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
-  { 'lewis6991/gitsigns.nvim', opts = {} },
   { 'numToStr/Comment.nvim', opts = {} },
   { 'windwp/nvim-autopairs', opts = {} },
   {
@@ -92,7 +91,7 @@ require('lazy').setup {
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c_sharp', 'lua', 'vim', 'vimdoc' },
+        ensure_installed = { 'c_sharp', 'lua', 'rust', 'vim', 'vimdoc' },
         auto_install = true,
         textobjects = {
           select = {
@@ -166,7 +165,7 @@ require('lazy').setup {
   },
   {
     'neovim/nvim-lspconfig',
-    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
+    dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'WhoIsSethDaniel/mason-tool-installer.nvim' },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(_)
@@ -179,8 +178,11 @@ require('lazy').setup {
         end,
       })
       require('mason').setup()
+      require('mason-tool-installer').setup {
+        ensure_installed = { 'prettier', 'stylua' },
+      }
       require('mason-lspconfig').setup {
-        ensure_installed = { 'lua_ls', 'omnisharp' },
+        ensure_installed = { 'lua_ls', 'omnisharp', 'rust_analyzer' },
         handlers = { function(_) require('lspconfig')[_].setup {} end },
       }
     end,
