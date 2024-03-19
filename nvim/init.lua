@@ -42,6 +42,8 @@ require('lazy').setup {
         json = { 'prettier' },
         lua = { 'stylua' },
         markdown = { 'prettier' },
+        python = { 'autopep8' },
+        rust = { 'rustfmt' },
         scss = { 'prettier' },
         typescript = { 'prettier' },
         yaml = { 'prettier' },
@@ -179,10 +181,10 @@ require('lazy').setup {
       })
       require('mason').setup()
       require('mason-tool-installer').setup {
-        ensure_installed = { 'prettier', 'stylua' },
+        ensure_installed = { 'autopep8', 'prettier', 'stylua' },
       }
       require('mason-lspconfig').setup {
-        ensure_installed = { 'lua_ls', 'omnisharp', 'rust_analyzer' },
+        ensure_installed = { 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
         handlers = { function(_) require('lspconfig')[_].setup {} end },
       }
     end,
