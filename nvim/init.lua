@@ -1,18 +1,18 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
-vim.cmd 'set autochdir'
-vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
-vim.keymap.set('n', 'H', '^')
-vim.keymap.set('n', 'L', '$')
 vim.o.background = 'light'
 vim.o.clipboard = 'unnamedplus'
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.number = true
 vim.o.relativenumber = true
-vim.o.shell = 'nu'
 vim.o.termguicolors = true
+vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
+vim.keymap.set('n', 'H', '^')
+vim.keymap.set('n', 'L', '$')
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
+vim.cmd 'set autochdir'
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -36,6 +36,8 @@ require('lazy').setup {
     opts = {
       format_after_save = { lsp_fallback = true },
       formatters_by_ft = {
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
         css = { 'prettier' },
         html = { 'prettier' },
         javascript = { 'prettier' },
@@ -78,7 +80,7 @@ require('lazy').setup {
       local harpoon = require 'harpoon'
       harpoon:setup()
       vim.keymap.set('n', '<C-n>a', function() harpoon:list():append() end, { desc = 'Append' })
-      vim.keymap.set('n', '<C-n>u', function() harpoon:list():select(1) end, { desc = 'Select 1' })
+      vim.keymap.set('n', '<C-n>h', function() harpoon:list():select(1) end, { desc = 'Select 1' })
       vim.keymap.set('n', '<C-n>j', function() harpoon:list():select(2) end, { desc = 'Select 2' })
       vim.keymap.set('n', '<C-n>k', function() harpoon:list():select(3) end, { desc = 'Select 3' })
       vim.keymap.set('n', '<C-n>l', function() harpoon:list():select(4) end, { desc = 'Select 4' })
@@ -93,7 +95,7 @@ require('lazy').setup {
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c_sharp', 'lua', 'rust', 'vim', 'vimdoc' },
+        ensure_installed = { 'c', 'c_sharp', 'cpp', 'lua', 'markdown', 'rust', 'vim', 'vimdoc' },
         auto_install = true,
         textobjects = {
           select = {
@@ -104,31 +106,26 @@ require('lazy').setup {
               ['if'] = '@function.inner',
               ['ac'] = '@class.outer',
               ['ic'] = '@class.inner',
-              ['as'] = '@scope',
             },
           },
           move = {
             enable = true,
             set_jumps = true,
             goto_next_start = {
-              ['(nf'] = '@function.outer',
-              ['(nc'] = '@class.outer',
-              ['(ns'] = '@scope',
+              ['(f'] = '@function.outer',
+              ['(c'] = '@class.outer',
             },
             goto_next_end = {
-              [')nf'] = '@function.outer',
-              [')nc'] = '@class.outer',
-              [')ns'] = '@scope',
+              [')f'] = '@function.outer',
+              [')c'] = '@class.outer',
             },
             goto_previous_start = {
-              ['(pf'] = '@function.outer',
-              ['(pc'] = '@class.outer',
-              ['(ps'] = '@scope',
+              ['[f'] = '@function.outer',
+              ['[c'] = '@class.outer',
             },
             goto_previous_end = {
-              [')pf'] = '@function.outer',
-              [')pc'] = '@class.outer',
-              [')ps'] = '@scope',
+              [']f'] = '@function.outer',
+              [']c'] = '@class.outer',
             },
           },
         },
@@ -156,6 +153,7 @@ require('lazy').setup {
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-x>'] = cmp.mapping.abort(),
         },
         sources = cmp.config.sources {
           { name = 'buffer' },
@@ -172,19 +170,23 @@ require('lazy').setup {
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(_)
           vim.bo[_.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-          vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { desc = 'Code action', buffer = _.buf })
-          vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = 'Rename symbol', buffer = _.buf })
+          vim.keymap.set('n', '<leader>d', vim.lsp.buf.type_definition, { desc = 'Go to type definition', buffer = _.buf })
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration', buffer = _.buf })
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition', buffer = _.buf })
-          vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = 'Display information', buffer = _.buf })
-          vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Display references', buffer = _.buf })
+          vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { desc = 'Hover information', buffer = _.buf })
+          vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = 'Go to implementation', buffer = _.buf })
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Symbol references', buffer = _.buf })
+          vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = 'Rename symbol', buffer = _.buf })
+          vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { desc = 'Signature help', buffer = _.buf })
+          vim.keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, { desc = 'Code action', buffer = _.buf })
         end,
       })
       require('mason').setup()
       require('mason-tool-installer').setup {
-        ensure_installed = { 'autopep8', 'prettier', 'stylua' },
+        ensure_installed = { 'autopep8', 'clang-format', 'llm-ls', 'prettier', 'stylua' },
       }
       require('mason-lspconfig').setup {
-        ensure_installed = { 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
+        ensure_installed = { 'clangd', 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
         handlers = { function(_) require('lspconfig')[_].setup {} end },
       }
     end,
@@ -197,10 +199,29 @@ require('lazy').setup {
       local builtin = require 'telescope.builtin'
       require('telescope').load_extension 'fzf'
       vim.keymap.set('n', '<C-f>b', builtin.buffers, { desc = 'Buffers' })
+      vim.keymap.set('n', '<C-f>c', builtin.commands, { desc = 'Commands' })
+      vim.keymap.set('n', '<C-f>d', builtin.diagnostics, { desc = 'Diagnostics' })
       vim.keymap.set('n', '<C-f>f', builtin.find_files, { desc = 'Find files' })
+      vim.keymap.set('n', '<C-f>G', builtin.git_status, { desc = 'Git status' })
       vim.keymap.set('n', '<C-f>g', builtin.live_grep, { desc = 'Live grep' })
       vim.keymap.set('n', '<C-f>h', builtin.help_tags, { desc = 'Help tags' })
+      vim.keymap.set('n', '<C-f>k', builtin.keymaps, { desc = 'Keymaps' })
+      vim.keymap.set('n', '<C-f>m', builtin.marks, { desc = 'Marks' })
       vim.keymap.set('n', '<C-f>o', builtin.oldfiles, { desc = 'Old files' })
+      vim.keymap.set('n', '<C-f>s', builtin.lsp_document_symbols, { desc = 'Document symbols' })
+      vim.keymap.set('n', '<C-f>S', builtin.lsp_workspace_symbols, { desc = 'Workspace symbols' })
+      vim.keymap.set('n', '<C-f>t', builtin.treesitter, { desc = 'Treesitter' })
+    end,
+  },
+  {
+    'huggingface/llm.nvim',
+    config = function()
+      require('llm').setup {
+        backend = 'ollama',
+        model = 'codellama',
+        url = 'http://localhost:11434/api/generate',
+        lsp = { bin_path = vim.api.nvim_call_function('stdpath', { 'data' }) .. '/mason/bin/llm-ls' },
+      }
     end,
   },
 }
