@@ -73,23 +73,6 @@ require('lazy').setup {
     end,
   },
   {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local harpoon = require 'harpoon'
-      harpoon:setup()
-      vim.keymap.set('n', '<C-n>a', function() harpoon:list():append() end, { desc = 'Append' })
-      vim.keymap.set('n', '<C-n>h', function() harpoon:list():select(1) end, { desc = 'Select 1' })
-      vim.keymap.set('n', '<C-n>j', function() harpoon:list():select(2) end, { desc = 'Select 2' })
-      vim.keymap.set('n', '<C-n>k', function() harpoon:list():select(3) end, { desc = 'Select 3' })
-      vim.keymap.set('n', '<C-n>l', function() harpoon:list():select(4) end, { desc = 'Select 4' })
-      vim.keymap.set('n', '<C-n>m', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = 'Quick menu' })
-      vim.keymap.set('n', '<C-n>n', function() harpoon:list():next() end, { desc = 'Next item' })
-      vim.keymap.set('n', '<C-n>p', function() harpoon:list():prev() end, { desc = 'Previous item' })
-    end,
-  },
-  {
     'nvim-treesitter/nvim-treesitter',
     dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
     build = ':TSUpdate',
