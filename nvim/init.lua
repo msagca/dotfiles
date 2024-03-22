@@ -2,14 +2,21 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.background = 'light'
 vim.o.clipboard = 'unnamedplus'
+vim.o.cursorline = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.showmode = false
 vim.o.termguicolors = true
+vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
+vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
+vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
+vim.keymap.set('n', '<C-x>', vim.cmd.tabclose)
 vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
+vim.keymap.set('n', 'X', vim.cmd.bd)
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 vim.cmd 'set autochdir'
@@ -21,11 +28,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   { 'numToStr/Comment.nvim', opts = {} },
+  { 'lewis6991/gitsigns.nvim', opts = {} },
   { 'windwp/nvim-autopairs', opts = {} },
   {
     'catppuccin/nvim',
     name = 'catppuccin',
     config = function() vim.cmd.colorscheme 'catppuccin-latte' end,
+  },
+  {
+    'echasnovski/mini.nvim',
+    config = function()
+      require('mini.statusline').setup()
+      require('mini.tabline').setup()
+    end,
   },
   {
     'mbbill/undotree',
@@ -48,6 +63,7 @@ require('lazy').setup {
         rust = { 'rustfmt' },
         scss = { 'prettier' },
         typescript = { 'prettier' },
+        xml = { 'xmlformatter' },
         yaml = { 'prettier' },
       },
     },
@@ -60,7 +76,6 @@ require('lazy').setup {
       which_key.setup()
       which_key.register {
         ['<C-f>'] = { name = 'Telescope' },
-        ['<C-n>'] = { name = 'Harpoon' },
       }
     end,
   },
@@ -166,7 +181,7 @@ require('lazy').setup {
       })
       require('mason').setup()
       require('mason-tool-installer').setup {
-        ensure_installed = { 'autopep8', 'clang-format', 'llm-ls', 'prettier', 'stylua' },
+        ensure_installed = { 'autopep8', 'clang-format', 'llm-ls', 'prettier', 'stylua', 'xmlformatter' },
       }
       require('mason-lspconfig').setup {
         ensure_installed = { 'clangd', 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
