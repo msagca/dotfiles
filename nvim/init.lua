@@ -1,14 +1,21 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.o.background = 'light'
+vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.cursorline = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
+vim.o.linebreak = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.showmode = false
+vim.o.signcolumn = 'auto'
+vim.o.smartcase = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 vim.o.termguicolors = true
+vim.o.wrap = true
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
@@ -28,7 +35,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   { 'numToStr/Comment.nvim', opts = {} },
-  { 'lewis6991/gitsigns.nvim', opts = {} },
   { 'windwp/nvim-autopairs', opts = {} },
   {
     'catppuccin/nvim',
@@ -37,7 +43,9 @@ require('lazy').setup {
   },
   {
     'echasnovski/mini.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'lewis6991/gitsigns.nvim' },
     config = function()
+      require('gitsigns').setup {}
       require('mini.statusline').setup()
       require('mini.tabline').setup()
     end,
