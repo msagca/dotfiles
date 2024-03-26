@@ -1,6 +1,9 @@
 return {
   'echasnovski/mini.nvim',
-  dependencies = { 'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    'lewis6991/gitsigns.nvim',
+    'nvim-tree/nvim-web-devicons',
+  },
   config = function()
     require('gitsigns').setup()
     require('mini.statusline').setup()

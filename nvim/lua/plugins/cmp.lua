@@ -14,7 +14,11 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
     cmp.setup {
       completion = { completeopt = 'menu,menuone,noinsert' },
-      snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),

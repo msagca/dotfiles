@@ -1,6 +1,10 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+  dependencies = {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'williamboman/mason.nvim',
+  },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(_)
@@ -22,7 +26,11 @@ return {
     }
     require('mason-lspconfig').setup {
       ensure_installed = { 'clangd', 'cmake', 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
-      handlers = { function(_) require('lspconfig')[_].setup {} end },
+      handlers = {
+        function(_)
+          require('lspconfig')[_].setup {}
+        end,
+      },
     }
   end,
 }
