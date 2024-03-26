@@ -22,10 +22,19 @@ return {
     })
     require('mason').setup()
     require('mason-tool-installer').setup {
-      ensure_installed = { 'autopep8', 'clang-format', 'gersemi', 'llm-ls', 'prettier', 'stylua', 'taplo', 'xmlformatter' },
+      ensure_installed = {
+        'autopep8',
+        'clang-format',
+        'gersemi',
+        'llm-ls',
+        'prettier',
+        'stylua',
+        'taplo',
+        'xmlformatter',
+      },
     }
     require('mason-lspconfig').setup {
-      ensure_installed = { 'clangd', 'cmake', 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer' },
+      ensure_installed = { 'lua_ls', 'omnisharp' },
       handlers = {
         function(_)
           require('lspconfig')[_].setup {}

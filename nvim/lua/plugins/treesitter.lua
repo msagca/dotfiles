@@ -4,7 +4,7 @@ return {
   build = ':TSUpdate',
   config = function()
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'c', 'c_sharp', 'cpp', 'lua', 'markdown', 'rust', 'vim', 'vimdoc' },
+      ensure_installed = { 'c_sharp', 'lua', 'vim' },
       auto_install = true,
       textobjects = {
         select = {
