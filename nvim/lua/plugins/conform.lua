@@ -5,6 +5,7 @@ return {
       format_after_save = { lsp_fallback = true },
       formatters_by_ft = {
         c = { 'clang-format' },
+        cmake = { 'gersemi' },
         cpp = { 'clang-format' },
         css = { 'prettier' },
         html = { 'prettier' },
