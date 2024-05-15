@@ -28,13 +28,13 @@ return {
         'gersemi',
         'llm-ls',
         'prettier',
+        'shfmt',
         'stylua',
         'taplo',
-        'xmlformatter',
       },
     }
     require('mason-lspconfig').setup {
-      ensure_installed = { 'lua_ls', 'omnisharp' },
+      ensure_installed = { 'clangd', 'lua_ls', 'omnisharp' },
       handlers = {
         function(_)
           require('lspconfig')[_].setup {}

@@ -4,6 +4,7 @@ return {
     require('conform').setup {
       format_after_save = { lsp_fallback = true },
       formatters_by_ft = {
+        bash = { 'shfmt' },
         c = { 'clang-format' },
         cmake = { 'gersemi' },
         cpp = { 'clang-format' },
@@ -16,9 +17,9 @@ return {
         python = { 'autopep8' },
         rust = { 'rustfmt' },
         scss = { 'prettier' },
+        sh = { 'shfmt' },
         toml = { 'taplo' },
         typescript = { 'prettier' },
-        xml = { 'xmlformatter' },
         yaml = { 'prettier' },
       },
     }
