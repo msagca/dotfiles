@@ -5,13 +5,14 @@ return {
     require('oil').setup {
       use_default_keymaps = false,
       keymaps = {
-        ['g?'] = 'actions.show_help',
-        ['<CR>'] = 'actions.select',
-        ['<C-v>'] = 'actions.select_vsplit',
+        ['-'] = 'actions.parent',
         ['<C-c>'] = 'actions.close',
+        ['<C-v>'] = 'actions.select_vsplit',
+        ['<CR>'] = 'actions.select',
+        ['g?'] = 'actions.show_help',
       },
       view_options = { show_hidden = true },
     }
-    vim.keymap.set('n', '<leader>e', vim.cmd.Oil, { desc = 'File explorer' })
+    vim.keymap.set('n', '-', vim.cmd.Oil, { desc = 'File explorer' })
   end,
 }
