@@ -6,6 +6,7 @@ return {
     which_key.setup()
     which_key.register {
       ['<C-f>'] = { name = 'Telescope' },
+      ['<leader>'] = { name = 'Debug' },
     }
   end,
 }

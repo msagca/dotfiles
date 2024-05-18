@@ -28,9 +28,7 @@ vim.keymap.set('n', 'T', 'H')
 vim.keymap.set('n', 'X', vim.cmd.bd)
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
 })
 vim.cmd 'set autochdir'
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -45,9 +43,11 @@ require('lazy').setup {
   require 'plugins.catppuccin',
   require 'plugins.cmp',
   require 'plugins.conform',
+  require 'plugins.dap',
   -- require 'plugins.llm',
   require 'plugins.lsp',
   require 'plugins.mini',
+  require 'plugins.neodev',
   require 'plugins.oil',
   require 'plugins.telescope',
   require 'plugins.treesitter',

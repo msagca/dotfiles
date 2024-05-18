@@ -35,9 +35,7 @@ return {
     require('mason-lspconfig').setup {
       ensure_installed = { 'clangd', 'lua_ls', 'omnisharp' },
       handlers = {
-        function(_)
-          require('lspconfig')[_].setup {}
-        end,
+        function(_) require('lspconfig')[_].setup {} end,
       },
     }
   end,
