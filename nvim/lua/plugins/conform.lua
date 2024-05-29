@@ -8,6 +8,7 @@ return {
         c = { 'clang-format' },
         cmake = { 'gersemi' },
         cpp = { 'clang-format' },
+        csharp = { 'csharpier' },
         css = { 'prettier' },
         html = { 'prettier' },
         javascript = { 'prettier' },

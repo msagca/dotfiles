@@ -15,7 +15,7 @@ return {
       }
       dap.configurations.c = {
         {
-          name = 'Launch',
+          name = 'Launch C',
           type = 'gdb',
           request = 'launch',
           program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
@@ -45,6 +45,7 @@ return {
     vim.keymap.set('n', '<leader>l', function() dap.list_breakpoints() end, { desc = 'List breakpoints' })
     vim.keymap.set('n', '<leader>r', function() dap.restart() end, { desc = 'Restart' })
     vim.keymap.set('n', '<leader>s', function() widgets.centered_float(widgets.scopes) end, { desc = 'Scopes' })
+    vim.keymap.set('n', '<leader>t', function() dap.terminate() end, { desc = 'Terminate' })
     vim.keymap.set({ 'n', 'v' }, '<leader>h', function() widgets.hover() end, { desc = 'Hover' })
     vim.keymap.set({ 'n', 'v' }, '<leader>p', function() widgets.preview() end, { desc = 'Preview' })
   end,

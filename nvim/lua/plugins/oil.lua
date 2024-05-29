@@ -7,7 +7,7 @@ return {
       keymaps = {
         ['-'] = 'actions.parent',
         ['<C-c>'] = 'actions.close',
-        ['<C-v>'] = 'actions.select_vsplit',
+        ['<C-s>'] = 'actions.select_vsplit',
         ['<CR>'] = 'actions.select',
         ['g?'] = 'actions.show_help',
       },
