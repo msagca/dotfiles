@@ -24,7 +24,6 @@ return {
       ensure_installed = {
         'autopep8',
         'clang-format',
-        'csharpier',
         'gersemi',
         'llm-ls',
         'prettier',
