@@ -6,21 +6,39 @@ return {
   },
   config = function()
     local dap = require 'dap'
+    local program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end
     local gdb = vim.fn.exepath 'gdb'
     if gdb ~= '' then
       dap.adapters.gdb = {
-        type = 'executable',
         command = gdb,
         args = { '-i', 'dap' },
+        type = 'executable',
       }
       dap.configurations.c = {
         {
           name = 'Launch C',
-          type = 'gdb',
-          request = 'launch',
-          program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
           cwd = '${workspaceFolder}',
-          stopAtBeginningOfMainSubprogram = false,
+          program = program,
+          request = 'launch',
+          type = 'gdb',
+        },
+      }
+    end
+    local opendebugad7 = os.getenv 'OpenDebugAD7' -- this environment variable stores the path to OpenDebugAD7.exe, which is contained in the .vsix archives available here: https://github.com/microsoft/vscode-cpptools/releases/
+    if opendebugad7 ~= '' then
+      dap.adapters.cppdbg = {
+        command = opendebugad7,
+        id = 'cppdbg',
+        options = { detached = false },
+        type = 'executable',
+      }
+      dap.configurations.cpp = {
+        {
+          name = 'Launch C++',
+          cwd = '${workspaceFolder}',
+          program = program,
+          request = 'launch',
+          type = 'cppdbg',
         },
       }
     end
