@@ -38,8 +38,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
-  { 'numToStr/Comment.nvim', opts = {} },
-  { 'windwp/nvim-autopairs', opts = {} },
   require 'plugins.catppuccin',
   require 'plugins.cmp',
   require 'plugins.conform',
