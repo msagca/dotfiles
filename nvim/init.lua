@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.o.background = 'light'
+vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.cursorline = true
@@ -16,6 +16,10 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
@@ -42,6 +46,7 @@ require('lazy').setup {
   require 'plugins.cmp',
   require 'plugins.conform',
   require 'plugins.dap',
+  require 'plugins.lazydev',
   -- require 'plugins.llm',
   require 'plugins.lsp',
   require 'plugins.mini',
