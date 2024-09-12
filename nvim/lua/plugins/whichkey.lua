@@ -4,9 +4,6 @@ return {
   config = function()
     local which_key = require 'which-key'
     which_key.setup()
-    which_key.add {
-      { '<C-f>', group = 'Telescope' },
-      { '<leader>', group = 'Debug' },
-    }
+    which_key.add { { '<C-f>', group = 'Telescope' }, { '<leader>', group = 'Debug' } }
   end,
 }

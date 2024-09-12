@@ -16,10 +16,10 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
+vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
@@ -31,9 +31,7 @@ vim.keymap.set('n', 'L', '$')
 vim.keymap.set('n', 'T', 'H')
 vim.keymap.set('n', 'X', vim.cmd.bd)
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function() vim.highlight.on_yank() end,
-})
+vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 vim.cmd 'set autochdir'
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -50,6 +48,7 @@ require('lazy').setup {
   -- require 'plugins.llm',
   require 'plugins.lsp',
   require 'plugins.mini',
+  require 'plugins.octo',
   require 'plugins.oil',
   require 'plugins.telescope',
   require 'plugins.treesitter',

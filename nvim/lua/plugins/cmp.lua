@@ -1,11 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  dependencies = {
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-nvim-lsp',
-    'L3MON4D3/LuaSnip',
-    'rafamadriz/friendly-snippets',
-  },
+  dependencies = { 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'rafamadriz/friendly-snippets' },
   event = 'InsertEnter',
   config = function()
     local cmp = require 'cmp'
@@ -14,9 +9,7 @@ return {
     require('luasnip.loaders.from_vscode').lazy_load()
     cmp.setup {
       completion = { completeopt = 'menu,menuone,noinsert' },
-      snippet = {
-        expand = function(args) luasnip.lsp_expand(args.body) end,
-      },
+      snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
       mapping = cmp.mapping.preset.insert {
         ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
