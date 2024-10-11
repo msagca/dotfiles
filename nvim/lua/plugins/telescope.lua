@@ -3,10 +3,7 @@ return {
   dependencies = {
     'BurntSushi/ripgrep',
     'nvim-lua/plenary.nvim',
-    {
-      'nvim-telescope/telescope-fzf-native.nvim',
-      build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
-    },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   event = 'VimEnter',
   config = function()

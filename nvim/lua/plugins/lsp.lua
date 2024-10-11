@@ -29,7 +29,7 @@ return {
       },
     }
     require('mason-lspconfig').setup {
-      ensure_installed = { 'clangd', 'lua_ls', 'omnisharp' },
+      ensure_installed = { 'clangd', 'lua_ls', 'omnisharp', 'pyright' },
       handlers = { function(_) require('lspconfig')[_].setup {} end },
     }
   end,

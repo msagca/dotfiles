@@ -48,7 +48,6 @@ require('lazy').setup {
   -- require 'plugins.llm',
   require 'plugins.lsp',
   require 'plugins.mini',
-  require 'plugins.octo',
   require 'plugins.oil',
   require 'plugins.telescope',
   require 'plugins.treesitter',
