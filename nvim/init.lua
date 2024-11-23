@@ -4,6 +4,9 @@ vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.cursorline = true
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 1
+vim.o.foldmethod = 'expr'
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.linebreak = true
@@ -16,20 +19,16 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
+vim.keymap.set('n', 'H', '^')
+vim.keymap.set('n', 'L', '$')
+vim.keymap.set('n', 'T', 'H')
+vim.keymap.set('n', 'B', 'L')
+vim.keymap.set('n', '<C-c>', vim.cmd.bd)
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
 vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
 vim.keymap.set('n', '<C-x>', vim.cmd.tabclose)
 vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
-vim.keymap.set('n', 'B', 'L')
-vim.keymap.set('n', 'H', '^')
-vim.keymap.set('n', 'L', '$')
-vim.keymap.set('n', 'T', 'H')
-vim.keymap.set('n', 'X', vim.cmd.bd)
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 vim.cmd 'set autochdir'
@@ -41,7 +40,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup {
   require 'plugins.catppuccin',
-  require 'plugins.cmp',
   require 'plugins.conform',
   require 'plugins.dap',
   require 'plugins.lazydev',
@@ -52,5 +50,4 @@ require('lazy').setup {
   require 'plugins.telescope',
   require 'plugins.treesitter',
   require 'plugins.undotree',
-  require 'plugins.whichkey',
 }

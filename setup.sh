@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 SOURCE="${BASH_SOURCE}"
 while [ -L "$SOURCE" ]; do
 	SOURCE_DIR=$(cd -P "$(dirname "$SOURCE")" >/dev/null 2>&1 && pwd)
