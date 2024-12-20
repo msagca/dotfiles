@@ -10,12 +10,12 @@ return {
         { mode = 'i', keys = '<C-r>' },
         { mode = 'i', keys = '<C-x>' },
         { mode = 'n', keys = "'" },
-        { mode = 'n', keys = '[' },
-        { mode = 'n', keys = ']' },
         { mode = 'n', keys = '"' },
         { mode = 'n', keys = '<C-f>' },
         { mode = 'n', keys = '<C-w>' },
         { mode = 'n', keys = '<Leader>' },
+        { mode = 'n', keys = '[' },
+        { mode = 'n', keys = ']' },
         { mode = 'n', keys = '`' },
         { mode = 'n', keys = 'g' },
         { mode = 'n', keys = 's' },
@@ -25,6 +25,7 @@ return {
         { mode = 'x', keys = '<Leader>' },
         { mode = 'x', keys = '`' },
         { mode = 'x', keys = 'g' },
+        { mode = 'x', keys = 's' },
         { mode = 'x', keys = 'z' },
       },
       clues = {
@@ -36,7 +37,6 @@ return {
         clue.gen_clues.z(),
       },
       window = {
-        delay = 0,
         scroll_down = '<C-n>',
         scroll_up = '<C-p>',
       },
@@ -46,12 +46,20 @@ return {
     require('mini.cursorword').setup()
     require('mini.diff').setup { mappings = {} }
     require('mini.git').setup()
-    require('mini.hipatterns').setup()
+    local hipatterns = require 'mini.hipatterns'
+    hipatterns.setup {
+      highlighters = {
+        fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+        hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+        todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+        note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+        hex_color = hipatterns.gen_highlighter.hex_color(),
+      },
+    }
     require('mini.icons').setup()
     require('mini.indentscope').setup()
     require('mini.jump').setup()
     require('mini.jump2d').setup()
-    require('mini.map').setup()
     require('mini.move').setup()
     require('mini.notify').setup()
     require('mini.pairs').setup()

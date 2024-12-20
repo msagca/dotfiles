@@ -19,10 +19,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
-vim.keymap.set('n', 'H', '^')
-vim.keymap.set('n', 'L', '$')
-vim.keymap.set('n', 'T', 'H')
-vim.keymap.set('n', 'B', 'L')
 vim.keymap.set('n', '<C-c>', vim.cmd.bd)
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev)
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext)
@@ -30,6 +26,8 @@ vim.keymap.set('n', '<C-t>', vim.cmd.tabnew)
 vim.keymap.set('n', '<C-x>', vim.cmd.tabclose)
 vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch)
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set({ 'n', 'v' }, 'H', '^')
+vim.keymap.set({ 'n', 'v' }, 'L', '$')
 vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
 vim.cmd 'set autochdir'
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
