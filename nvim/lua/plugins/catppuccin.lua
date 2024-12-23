@@ -1,5 +1,15 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
-  config = function() vim.cmd.colorscheme 'catppuccin-macchiato' end,
+  config = function()
+    require('catppuccin').setup {
+      background = { dark = 'macchiato' },
+      dim_inactive = { enabled = true, percentage = 0.1 },
+      styles = {
+        conditionals = {},
+        miscs = {},
+      },
+    }
+    vim.cmd.colorscheme 'catppuccin'
+  end,
 }
