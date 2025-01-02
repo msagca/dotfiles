@@ -3,9 +3,6 @@ vim.g.maplocalleader = ' '
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.cursorline = true
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.o.foldlevel = 1
-vim.o.foldmethod = 'expr'
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.linebreak = true
@@ -59,4 +56,5 @@ require('lazy').setup {
   require 'plugins.telescope',
   require 'plugins.treesitter',
   require 'plugins.undotree',
+  require 'plugins.whichkey',
 }

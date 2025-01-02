@@ -3,44 +3,6 @@ return {
   config = function()
     require('mini.ai').setup()
     require('mini.bracketed').setup()
-    local clue = require 'mini.clue'
-    clue.setup {
-      triggers = {
-        { mode = 'c', keys = '<C-r>' },
-        { mode = 'i', keys = '<C-r>' },
-        { mode = 'i', keys = '<C-x>' },
-        { mode = 'n', keys = "'" },
-        { mode = 'n', keys = '"' },
-        { mode = 'n', keys = '<C-f>' },
-        { mode = 'n', keys = '<C-w>' },
-        { mode = 'n', keys = '<Leader>' },
-        { mode = 'n', keys = '[' },
-        { mode = 'n', keys = ']' },
-        { mode = 'n', keys = '`' },
-        { mode = 'n', keys = 'g' },
-        { mode = 'n', keys = 's' },
-        { mode = 'n', keys = 'z' },
-        { mode = 'x', keys = "'" },
-        { mode = 'x', keys = '"' },
-        { mode = 'x', keys = '<Leader>' },
-        { mode = 'x', keys = '`' },
-        { mode = 'x', keys = 'g' },
-        { mode = 'x', keys = 's' },
-        { mode = 'x', keys = 'z' },
-      },
-      clues = {
-        clue.gen_clues.builtin_completion(),
-        clue.gen_clues.g(),
-        clue.gen_clues.marks(),
-        clue.gen_clues.registers(),
-        clue.gen_clues.windows(),
-        clue.gen_clues.z(),
-      },
-      window = {
-        scroll_down = '<C-n>',
-        scroll_up = '<C-p>',
-      },
-    }
     require('mini.comment').setup()
     require('mini.completion').setup()
     require('mini.cursorword').setup()
