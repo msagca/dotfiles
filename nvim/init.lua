@@ -46,6 +46,7 @@ end
 vim.opt.rtp:prepend(path)
 require('lazy').setup {
   require 'plugins.catppuccin',
+  require 'plugins.cmp',
   require 'plugins.conform',
   -- require 'plugins.dap',
   require 'plugins.lazydev',
