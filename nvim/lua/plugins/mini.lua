@@ -1,5 +1,6 @@
 return {
   'echasnovski/mini.nvim',
+  event = 'VimEnter',
   config = function()
     local comment = require 'mini.comment'
     comment.setup {

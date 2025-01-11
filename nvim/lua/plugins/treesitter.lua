@@ -2,6 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
   build = ':TSUpdate',
+  event = 'BufRead',
   config = function()
     require('nvim-treesitter.configs').setup {
       ensure_installed = { 'lua', 'vim', 'vimdoc' },

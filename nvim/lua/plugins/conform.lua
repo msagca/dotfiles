@@ -1,5 +1,6 @@
 return {
   'stevearc/conform.nvim',
+  event = 'BufRead',
   config = function()
     require('conform').setup {
       format_after_save = { lsp_fallback = true },

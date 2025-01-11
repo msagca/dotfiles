@@ -1,5 +1,6 @@
 return {
   'huggingface/llm.nvim',
+  event = 'InsertEnter',
   config = function()
     require('llm').setup {
       backend = 'ollama',

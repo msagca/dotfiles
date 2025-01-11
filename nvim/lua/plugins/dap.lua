@@ -1,6 +1,7 @@
 return {
   'mfussenegger/nvim-dap',
   dependencies = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui' },
+  event = 'BufRead',
   config = function()
     local dap = require 'dap'
     local program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end
