@@ -28,19 +28,19 @@ return {
       mapping = cmp.mapping.preset.insert {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-y>'] = cmp.mapping.confirm(),
+        ['<C-y>'] = cmp.mapping.confirm { select = true },
         ['<C-c>'] = cmp.mapping.abort(),
         ['<C-t>'] = cmp.mapping.complete(),
       },
       formatting = {
         fields = { 'abbr', 'kind', 'menu' },
-        format = lspkind.cmp_format {},
+        format = lspkind.cmp_format(),
         expandable_indicator = true,
       },
     }
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources {
+      sources = {
         { name = 'cmdline' },
         { name = 'path' },
       },

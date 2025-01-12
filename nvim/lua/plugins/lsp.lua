@@ -1,6 +1,11 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = { 'WhoIsSethDaniel/mason-tool-installer.nvim', 'williamboman/mason-lspconfig.nvim', 'williamboman/mason.nvim', 'hrsh7th/cmp-nvim-lsp' },
+  dependencies = {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'williamboman/mason.nvim',
+    'hrsh7th/cmp-nvim-lsp',
+  },
   event = 'BufRead',
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
