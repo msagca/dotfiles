@@ -1,1 +1,5 @@
-return { 'folke/which-key.nvim', event = 'InsertEnter', opts = {} }
+return {
+  'folke/which-key.nvim',
+  event = 'InsertEnter',
+  opts = {},
+}

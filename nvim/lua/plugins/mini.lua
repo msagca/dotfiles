@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.nvim',
-  event = 'VimEnter',
+  event = 'BufRead',
   config = function()
     local comment = require 'mini.comment'
     comment.setup {
@@ -84,7 +84,6 @@ return {
         ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
       },
     }
-    require('mini.starter').setup()
     require('mini.statusline').setup()
     local surround = require 'mini.surround'
     surround.setup {

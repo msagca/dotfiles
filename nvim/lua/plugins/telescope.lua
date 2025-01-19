@@ -1,6 +1,10 @@
 return {
   'nvim-telescope/telescope.nvim',
-  dependencies = { 'BurntSushi/ripgrep', 'nvim-lua/plenary.nvim', { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
+  dependencies = {
+    'BurntSushi/ripgrep',
+    'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  },
   event = 'VimEnter',
   config = function()
     local builtin = require 'telescope.builtin'
