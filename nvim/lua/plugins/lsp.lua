@@ -12,10 +12,10 @@ return {
       callback = function(args)
         vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to declaration', buffer = args.buf })
-        vim.keymap.set('n', 'gI', vim.lsp.buf.hover, { desc = 'Display information', buffer = args.buf })
         vim.keymap.set('n', 'gR', vim.lsp.buf.rename, { desc = 'Rename symbol', buffer = args.buf })
+        vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code action', buffer = args.buf })
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition', buffer = args.buf })
-        vim.keymap.set({ 'n', 'v' }, 'gA', vim.lsp.buf.code_action, { desc = 'Code action', buffer = args.buf })
+        vim.keymap.set('n', 'gk', vim.lsp.buf.hover, { desc = 'Show documentation', buffer = args.buf })
       end,
     })
     require('mason').setup()

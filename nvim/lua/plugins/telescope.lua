@@ -5,7 +5,7 @@ return {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
-  event = 'VimEnter',
+  event = 'VeryLazy',
   config = function()
     local builtin = require 'telescope.builtin'
     require('telescope').load_extension 'fzf'

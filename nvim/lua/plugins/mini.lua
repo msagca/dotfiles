@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.nvim',
-  event = 'BufRead',
+  event = 'VeryLazy',
   config = function()
     local comment = require 'mini.comment'
     comment.setup {
@@ -36,7 +36,6 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }
-    require('mini.icons').setup()
     local indentscope = require 'mini.indentscope'
     indentscope.setup {
       mappings = {

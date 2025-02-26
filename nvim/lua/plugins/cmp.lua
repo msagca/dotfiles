@@ -17,7 +17,7 @@ return {
       sources = {
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
-        { name = 'buffer' },
+        -- { name = 'buffer' },
       },
       snippet = {
         expand = function(args)

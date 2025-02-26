@@ -1,7 +1,9 @@
 return {
   'stevearc/oil.nvim',
+  dependencies = { 'echasnovski/mini.icons' },
   event = 'VimEnter',
   config = function()
+    require('mini.icons').setup()
     require('oil').setup {
       use_default_keymaps = false,
       keymaps = {
