@@ -1,15 +1,16 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-cmdline',
+    -- 'hrsh7th/cmp-buffer',
+    -- 'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
     'onsails/lspkind.nvim',
   },
-  event = { 'InsertEnter', 'CmdlineEnter' },
+  -- event = { 'InsertEnter', 'CmdlineEnter' },
+  event = 'InsertEnter',
   config = function()
     local cmp = require 'cmp'
     local lspkind = require 'lspkind'
@@ -38,12 +39,12 @@ return {
         expandable_indicator = true,
       },
     }
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'cmdline' },
-        { name = 'path' },
-      },
-    })
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = {
+    --     { name = 'cmdline' },
+    --     { name = 'path' },
+    --   },
+    -- })
   end,
 }
