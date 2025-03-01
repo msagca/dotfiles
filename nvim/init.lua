@@ -10,10 +10,10 @@ vim.opt.rtp:prepend(path)
 require('lazy').setup {
   require 'plugins.catppuccin',
   require 'plugins.cmp',
+  require 'plugins.codecompanion',
   require 'plugins.conform',
   -- require 'plugins.dap',
   require 'plugins.lazydev',
-  -- require 'plugins.llm',
   require 'plugins.lsp',
   require 'plugins.mini',
   require 'plugins.oil',
