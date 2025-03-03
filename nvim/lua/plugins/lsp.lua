@@ -11,8 +11,11 @@ return {
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
         vim.bo[args.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+        vim.keymap.set('n', 'ga', vim.lsp.buf.code_action, { desc = 'Code action', buffer = args.buf })
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition', buffer = args.buf })
         vim.keymap.set('n', 'gk', vim.lsp.buf.hover, { desc = 'Show documentation', buffer = args.buf })
+        vim.keymap.set('n', 'grn', vim.lsp.buf.rename, { desc = 'Rename symbol', buffer = args.buf })
+        vim.keymap.set('n', 'grr', vim.lsp.buf.references, { desc = 'Show references', buffer = args.buf })
       end,
     })
     require('mason').setup()
@@ -21,7 +24,6 @@ return {
         'autopep8',
         'clang-format',
         'gersemi',
-        'llm-ls',
         'prettier',
         'shfmt',
         'stylua',
