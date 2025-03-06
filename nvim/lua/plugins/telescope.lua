@@ -1,14 +1,9 @@
 return {
   'nvim-telescope/telescope.nvim',
-  dependencies = {
-    'BurntSushi/ripgrep',
-    'nvim-lua/plenary.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  },
+  dependencies = { 'BurntSushi/ripgrep', 'nvim-lua/plenary.nvim' },
   event = 'VeryLazy',
   config = function()
     local builtin = require 'telescope.builtin'
-    require('telescope').load_extension 'fzf'
     vim.keymap.set('n', '\\b', builtin.buffers, { desc = 'Buffers' })
     vim.keymap.set('n', '\\C', builtin.git_commits, { desc = 'Git commits' })
     vim.keymap.set('n', '\\c', builtin.commands, { desc = 'Commands' })
