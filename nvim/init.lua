@@ -12,7 +12,7 @@ require('lazy').setup {
   require 'plugins.cmp',
   require 'plugins.codecompanion',
   require 'plugins.conform',
-  -- require 'plugins.dap',
+  require 'plugins.dap',
   require 'plugins.lazydev',
   require 'plugins.lsp',
   require 'plugins.mini',

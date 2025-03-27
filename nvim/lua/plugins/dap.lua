@@ -3,21 +3,23 @@ return {
   dependencies = { 'nvim-neotest/nvim-nio', 'rcarriga/nvim-dap-ui' },
   event = 'BufRead',
   config = function()
-    local dap = require 'dap'
     local program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end
     local gdb = vim.fn.exepath 'gdb'
+    local dap = require 'dap'
     if gdb ~= '' then
+      dap.adapters.cppdbg = { command = gdb, args = { '-i', 'dap' }, type = 'executable' }
       dap.adapters.gdb = { command = gdb, args = { '-i', 'dap' }, type = 'executable' }
       dap.configurations.c = { { name = 'Launch C', cwd = '${workspaceFolder}', program = program, request = 'launch', type = 'gdb' } }
-      dap.adapters.cppdbg = { command = gdb, args = { '-i', 'dap' }, type = 'executable' }
       dap.configurations.cpp = { { name = 'Launch C++', cwd = '${workspaceFolder}', program = program, request = 'launch', type = 'cppdbg' } }
     end
     local dapui = require 'dapui'
     dapui.setup()
+    dap.listeners.after.disconnect.dapui_config = function() dapui.close() end
+    dap.listeners.after.event_exited.dapui_config = function() dapui.close() end
+    dap.listeners.after.event_terminated.dapui_config = function() dapui.close() end
+    dap.listeners.after.terminate.dapui_config = function() dapui.close() end
     dap.listeners.before.attach.dapui_config = function() dapui.open() end
     dap.listeners.before.launch.dapui_config = function() dapui.open() end
-    dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-    dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
     local widgets = require 'dap.ui.widgets'
     vim.keymap.set('n', '<F10>', function() dap.step_over() end, { desc = 'Step over' })
     vim.keymap.set('n', '<F11>', function() dap.step_into() end, { desc = 'Step into' })
