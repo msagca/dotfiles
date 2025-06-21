@@ -11,6 +11,7 @@ return {
         cpp = { 'clang-format' },
         csharp = { 'clang-format' },
         css = { 'prettier' },
+        gdscript = { 'gdformat' },
         html = { 'prettier' },
         javascript = { 'prettier' },
         json = { 'prettier' },

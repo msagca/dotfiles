@@ -20,7 +20,7 @@ return {
     })
     require('mason').setup()
     require('mason-tool-installer').setup {
-      ensure_installed = { 'autopep8', 'clang-format', 'gersemi', 'prettier', 'shfmt', 'stylua', 'taplo' },
+      ensure_installed = { 'autopep8', 'clang-format', 'gdtoolkit', 'gersemi', 'prettier', 'shfmt', 'stylua', 'taplo' },
     }
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
     require('mason-lspconfig').setup {

@@ -27,12 +27,14 @@ return {
     vim.keymap.set('n', 'gO', diff.toggle_overlay, { desc = 'Diff overlay' })
     require('mini.git').setup()
     local hipatterns = require 'mini.hipatterns'
+    vim.api.nvim_set_hl(0, 'MiniHipatternsTemp', { fg = 'white', bg = '#E8C3E8', bold = true })
     hipatterns.setup {
       highlighters = {
         fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
         hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-        todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
         note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+        temp = { pattern = '%f[%w]()TEMP()%f[%W]', group = 'MiniHipatternsTemp' },
+        todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }
