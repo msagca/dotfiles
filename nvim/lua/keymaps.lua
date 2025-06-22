@@ -1,4 +1,3 @@
--- NOTE: keymaps for plugins are set inside their config functions
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.keymap.set('n', '<C-c>', vim.cmd.bd, { desc = 'Delete buffer' })

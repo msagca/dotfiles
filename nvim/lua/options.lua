@@ -1,5 +1,6 @@
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
+vim.o.completeopt = 'menu,menuone,noinsert'
 vim.o.cursorline = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
@@ -24,5 +25,3 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
     if string.find(result, 'light') then vim.o.background = 'light' end
   end
 end
-vim.api.nvim_create_autocmd('TextYankPost', { callback = function() vim.highlight.on_yank() end })
-vim.cmd 'set autochdir'
