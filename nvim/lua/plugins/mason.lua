@@ -15,15 +15,13 @@ return {
         'omnisharp',
         'prettier',
         'pyright',
-        'rust-analyzer',
         'shfmt',
         'stylua',
         'taplo',
-        'zls',
       },
       auto_update = true,
     }
-    local servers = { 'clangd', 'glsl_analyzer', 'lua_ls', 'omnisharp', 'pyright', 'rust_analyzer', 'zls' }
+    local servers = { 'clangd', 'glsl_analyzer', 'lua_ls', 'omnisharp', 'pyright' }
     for _, server in ipairs(servers) do
       vim.lsp.enable(server)
     end

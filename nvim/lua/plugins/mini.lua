@@ -5,6 +5,7 @@ return {
     require('mini.comment').setup()
     require('mini.cursorword').setup()
     require('mini.git').setup()
+    require('mini.icons').setup()
     require('mini.jump').setup()
     require('mini.move').setup()
     require('mini.notify').setup()

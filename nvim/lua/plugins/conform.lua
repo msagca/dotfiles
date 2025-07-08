@@ -3,13 +3,13 @@ return {
   event = 'BufRead',
   config = function()
     require('conform').setup {
-      format_after_save = { lsp_fallback = true },
+      format_after_save = { lsp_format = 'fallback' },
       formatters_by_ft = {
         bash = { 'shfmt' },
         c = { 'clang-format' },
         cmake = { 'gersemi' },
         cpp = { 'clang-format' },
-        csharp = { 'clang-format' },
+        csharp = { 'clang-format', 'csharpier', lsp_format = 'prefer' },
         css = { 'prettier' },
         gdscript = { 'gdformat' },
         html = { 'prettier' },
@@ -21,10 +21,10 @@ return {
         rust = { 'rustfmt' },
         scss = { 'prettier' },
         sh = { 'shfmt' },
-        systemverilog = { 'clang-format' },
+        systemverilog = { 'verible', 'clang-format', stop_after_first = true },
         toml = { 'taplo' },
         typescript = { 'prettier' },
-        verilog = { 'clang-format' },
+        verilog = { 'verible', 'clang-format', stop_after_first = true },
         yaml = { 'prettier' },
       },
     }
