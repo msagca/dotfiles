@@ -18,10 +18,11 @@ return {
         'shfmt',
         'stylua',
         'taplo',
+        'verible',
       },
       auto_update = true,
     }
-    local servers = { 'clangd', 'glsl_analyzer', 'lua_ls', 'omnisharp', 'pyright' }
+    local servers = { 'clangd', 'glsl_analyzer', 'lua_ls', 'omnisharp', 'pyright', 'verible' }
     for _, server in ipairs(servers) do
       vim.lsp.enable(server)
     end
