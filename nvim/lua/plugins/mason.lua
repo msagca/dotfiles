@@ -31,7 +31,7 @@ return {
       },
       auto_update = true,
     }
-    local servers = {
+    vim.lsp.enable {
       'bashls',
       'clangd',
       'cssls',
@@ -47,9 +47,6 @@ return {
       'verible',
       'yamlls',
       'zls',
-    }
-    for _, server in ipairs(servers) do
-      vim.lsp.enable(server)
-    end
+    } -- server names defined by nvim-lspconfig may not match the tool name
   end,
 }

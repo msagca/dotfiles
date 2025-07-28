@@ -4,11 +4,13 @@ return {
     require('oil').setup {
       use_default_keymaps = false,
       keymaps = {
-        ['-'] = 'actions.parent',
-        ['<C-c>'] = 'actions.close',
-        ['<C-s>'] = 'actions.select_vsplit',
+        ['-'] = { 'actions.parent', mode = 'n' },
+        ['<C-c>'] = { 'actions.close', mode = 'n' },
+        ['<C-p>'] = 'actions.preview',
+        ['<C-s>'] = { 'actions.select', opts = { vertical = true } },
         ['<CR>'] = 'actions.select',
-        ['g?'] = 'actions.show_help',
+        ['g.'] = { 'actions.toggle_hidden', mode = 'n' },
+        ['g?'] = { 'actions.show_help', mode = 'n' },
       },
       view_options = { show_hidden = true },
     }

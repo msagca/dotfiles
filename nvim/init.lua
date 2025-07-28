@@ -7,11 +7,10 @@ vim.opt.rtp:prepend(path)
 require('lazy').setup {
   require 'plugins.catppuccin',
   require 'plugins.conform',
+  require 'plugins.lazydev',
   require 'plugins.mason',
   require 'plugins.mini',
   require 'plugins.oil',
-  require 'plugins.telescope',
-  require 'plugins.undotree',
   require 'plugins.whichkey',
 }
 require 'options'
