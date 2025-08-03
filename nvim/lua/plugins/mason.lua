@@ -17,7 +17,9 @@ return {
         'html-lsp',
         'jdtls',
         'lua-language-server',
+        'ols',
         'omnisharp',
+        'omnisharp-mono',
         'prettier',
         'pyright',
         'rust-analyzer',
@@ -40,6 +42,7 @@ return {
       'html',
       'jdtls',
       'lua_ls',
+      'ols',
       'omnisharp',
       'pyright',
       'rust_analyzer',
@@ -47,6 +50,6 @@ return {
       'verible',
       'yamlls',
       'zls',
-    } -- server names defined by nvim-lspconfig may not match the tool name
+    } -- server name (defined by nvim-lspconfig) may not match the tool name
   end,
 }

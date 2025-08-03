@@ -3,6 +3,6 @@ return {
   event = 'VeryLazy',
   config = function()
     local wk = require 'which-key'
-    wk.add { '<leader>', desc = 'Pick from' }
+    wk.add { '<Leader>', desc = 'Pick from' }
   end,
 }

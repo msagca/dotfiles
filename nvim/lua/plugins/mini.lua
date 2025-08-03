@@ -1,13 +1,15 @@
 return {
   'echasnovski/mini.nvim',
-  dependencies = { 'BurntSushi/ripgrep' },
+  dependencies = { 'BurntSushi/ripgrep', 'rafamadriz/friendly-snippets' },
   event = 'VeryLazy',
   config = function()
     require('mini.comment').setup()
+    require('mini.completion').setup()
     require('mini.cursorword').setup()
     require('mini.git').setup()
     require('mini.icons').setup()
     require('mini.jump').setup()
+    require('mini.jump2d').setup()
     require('mini.move').setup()
     require('mini.notify').setup()
     require('mini.pairs').setup()
@@ -29,10 +31,12 @@ return {
     }
     local pick = require 'mini.pick'
     pick.setup()
-    vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Buffers' })
-    vim.keymap.set('n', '<leader>f', pick.builtin.files, { desc = 'Files' })
-    vim.keymap.set('n', '<leader>g', pick.builtin.grep, { desc = 'Pattern match' })
-    vim.keymap.set('n', '<leader>h', pick.builtin.help, { desc = 'Help tags' })
-    vim.keymap.set('n', '<leader>l', pick.builtin.grep_live, { desc = 'Live pattern match' })
+    vim.keymap.set('n', '<Leader>b', pick.builtin.buffers, { desc = 'Buffers' })
+    vim.keymap.set('n', '<Leader>f', pick.builtin.files, { desc = 'Files' })
+    vim.keymap.set('n', '<Leader>g', pick.builtin.grep, { desc = 'Pattern match' })
+    vim.keymap.set('n', '<Leader>h', pick.builtin.help, { desc = 'Help tags' })
+    vim.keymap.set('n', '<Leader>l', pick.builtin.grep_live, { desc = 'Live pattern match' })
+    local snippets = require 'mini.snippets'
+    snippets.setup { snippets = { snippets.gen_loader.from_lang() } }
   end,
 }

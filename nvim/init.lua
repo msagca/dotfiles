@@ -13,6 +13,6 @@ require('lazy').setup {
   require 'plugins.oil',
   require 'plugins.whichkey',
 }
-require 'options'
-require 'keymaps'
 require 'commands'
+require 'mappings'
+require 'options'
