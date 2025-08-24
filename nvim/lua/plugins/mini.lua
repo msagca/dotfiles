@@ -31,11 +31,12 @@ return {
     }
     local pick = require 'mini.pick'
     pick.setup()
-    vim.keymap.set('n', '<Leader>b', pick.builtin.buffers, { desc = 'Buffers' })
-    vim.keymap.set('n', '<Leader>f', pick.builtin.files, { desc = 'Files' })
-    vim.keymap.set('n', '<Leader>g', pick.builtin.grep, { desc = 'Pattern match' })
-    vim.keymap.set('n', '<Leader>h', pick.builtin.help, { desc = 'Help tags' })
-    vim.keymap.set('n', '<Leader>l', pick.builtin.grep_live, { desc = 'Live pattern match' })
+    vim.keymap.set('n', '<Leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
+    vim.keymap.set('n', '<Leader>f', pick.builtin.files, { desc = 'Pick from files' })
+    vim.keymap.set('n', '<Leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
+    vim.keymap.set('n', '<Leader>h', pick.builtin.help, { desc = 'Pick from help tags' })
+    vim.keymap.set('n', '<Leader>l', pick.builtin.grep_live, { desc = 'Pick from live pattern match' })
+    vim.keymap.set('n', '<Leader>r', pick.builtin.resume, { desc = 'Resume latest picker' })
     local snippets = require 'mini.snippets'
     snippets.setup { snippets = { snippets.gen_loader.from_lang() } }
   end,
