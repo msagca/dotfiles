@@ -11,7 +11,6 @@ return {
     require('mini.jump').setup()
     require('mini.jump2d').setup()
     require('mini.move').setup()
-    require('mini.notify').setup()
     require('mini.pairs').setup()
     require('mini.statusline').setup()
     require('mini.surround').setup()
@@ -29,8 +28,11 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }
+    local config = { window = { config = { border = 'none' } } }
+    local notify = require 'mini.notify'
+    notify.setup(config)
     local pick = require 'mini.pick'
-    pick.setup()
+    pick.setup(config)
     vim.keymap.set('n', '<Leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
     vim.keymap.set('n', '<Leader>f', pick.builtin.files, { desc = 'Pick from files' })
     vim.keymap.set('n', '<Leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
