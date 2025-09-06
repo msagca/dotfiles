@@ -50,6 +50,6 @@ return {
       'verible',
       'yamlls',
       'zls',
-    } -- server name (defined by nvim-lspconfig) may not match the tool name
+    } -- server name may not match the tool name
   end,
 }
