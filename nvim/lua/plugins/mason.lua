@@ -46,6 +46,7 @@ return {
       'omnisharp',
       'pyright',
       'rust_analyzer',
+      'taplo',
       'ts_ls',
       'verible',
       'yamlls',

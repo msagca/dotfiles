@@ -3,6 +3,7 @@ vim.o.clipboard = 'unnamedplus'
 vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.cursorline = true
 vim.o.hlsearch = true
+vim.o.ignorecase = true
 vim.o.linebreak = true
 vim.o.number = true
 vim.o.relativenumber = true
