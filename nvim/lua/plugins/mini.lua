@@ -17,7 +17,7 @@ return {
     require('mini.tabline').setup()
     local diff = require 'mini.diff'
     diff.setup()
-    vim.keymap.set('n', 'gO', diff.toggle_overlay, { desc = 'Diff overlay' })
+    vim.keymap.set('n', 'go', diff.toggle_overlay, { desc = 'Diff overlay' })
     local hipatterns = require 'mini.hipatterns'
     hipatterns.setup {
       highlighters = {

@@ -11,7 +11,7 @@ return {
     providers = {
       ollama = {
         endpoint = 'http://localhost:11434',
-        model = 'deepseek-r1:8b',
+        model = 'gemma3:1b',
       },
     },
   },
