@@ -1,3 +1,4 @@
+vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.completeopt = 'menu,menuone,noselect'
@@ -14,14 +15,10 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
--- set background mode based on Windows theme
-vim.o.background = 'dark'
 if vim.loop.os_uname().sysname == 'Windows_NT' then
-  local path = vim.fn.stdpath 'config' .. '/ps/get_theme.ps1'
-  local handle = io.popen('powershell -File "' .. path .. '"')
-  if handle ~= nil then
-    local result = handle:read '*a'
-    handle:close()
-    if string.find(result, 'light') then vim.o.background = 'light' end
-  end
+  local handle =
+    io.popen 'reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize /v AppsUseLightTheme'
+  local result = handle:read '*a'
+  handle:close()
+  if not result:match '0x0' then vim.o.background = 'light' end
 end

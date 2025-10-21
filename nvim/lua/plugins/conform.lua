@@ -4,7 +4,7 @@ return {
   config = function()
     local conform = require 'conform'
     conform.setup {
-      -- format_after_save = { lsp_format = 'fallback' },
+      format_after_save = { lsp_format = 'fallback' },
       formatters_by_ft = {
         bash = { 'shfmt' },
         c = { 'clang-format' },
