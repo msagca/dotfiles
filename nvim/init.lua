@@ -5,7 +5,6 @@ if not vim.loop.fs_stat(path) then
 end
 vim.opt.rtp:prepend(path)
 require('lazy').setup {
-  require 'plugins.avante',
   require 'plugins.catppuccin',
   require 'plugins.conform',
   require 'plugins.lazydev',

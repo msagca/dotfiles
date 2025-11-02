@@ -33,7 +33,7 @@ return {
       },
       auto_update = true,
     }
-    vim.lsp.enable {
+    local language_servers = {
       'bashls',
       'clangd',
       'cssls',
@@ -52,5 +52,6 @@ return {
       'yamlls',
       'zls',
     } -- server name may not match the tool name
+    vim.lsp.enable(language_servers)
   end,
 }
