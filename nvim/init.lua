@@ -1,20 +1,18 @@
-local path = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(path) then
-  local repo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', repo, path }
-end
-vim.opt.rtp:prepend(path)
-require('lazy').setup {
-  require 'plugins.catppuccin',
-  require 'plugins.conform',
-  require 'plugins.lazydev',
-  require 'plugins.lspconfig',
-  require 'plugins.mason',
-  require 'plugins.mason-tool-installer',
-  require 'plugins.mini',
-  require 'plugins.oil',
-  require 'plugins.whichkey',
-}
-require 'commands'
-require 'mappings'
+require 'bootstrap'
 require 'options'
+require 'mappings'
+require 'commands'
+pcall(
+  function()
+    require('lazy').setup {
+      require 'plugins.catppuccin',
+      require 'plugins.conform',
+      require 'plugins.lazydev',
+      require 'plugins.mason-lspconfig',
+      require 'plugins.mason-tool-installer',
+      require 'plugins.mini',
+      require 'plugins.oil',
+      require 'plugins.whichkey',
+    }
+  end
+)

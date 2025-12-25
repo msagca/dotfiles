@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.nvim',
-  dependencies = { 'BurntSushi/ripgrep', 'rafamadriz/friendly-snippets' },
+  dependencies = { 'BurntSushi/ripgrep' },
   event = 'VeryLazy',
   config = function()
     require('mini.comment').setup()
@@ -39,7 +39,5 @@ return {
     vim.keymap.set('n', '<Leader>h', pick.builtin.help, { desc = 'Pick from help tags' })
     vim.keymap.set('n', '<Leader>l', pick.builtin.grep_live, { desc = 'Pick from live pattern match' })
     vim.keymap.set('n', '<Leader>r', pick.builtin.resume, { desc = 'Resume latest picker' })
-    local snippets = require 'mini.snippets'
-    snippets.setup { snippets = { snippets.gen_loader.from_lang() } }
   end,
 }

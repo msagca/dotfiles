@@ -1,8 +1,11 @@
 return {
-  'neovim/nvim-lspconfig',
-  event = 'VeryLazy',
-  config = function()
-    local language_servers = {
+  'mason-org/mason-lspconfig.nvim',
+  dependencies = {
+    { 'mason-org/mason.nvim', opts = {} },
+    'neovim/nvim-lspconfig',
+  },
+  opts = {
+    ensure_installed = {
       'bashls',
       'clangd',
       'cssls',
@@ -13,6 +16,7 @@ return {
       'lua_ls',
       'ols',
       'omnisharp',
+      'powershell_es',
       'pyright',
       'rust_analyzer',
       'taplo',
@@ -20,7 +24,6 @@ return {
       'verible',
       'yamlls',
       'zls',
-    }
-    vim.lsp.enable(language_servers)
-  end,
+    },
+  },
 }

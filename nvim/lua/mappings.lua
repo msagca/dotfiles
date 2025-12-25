@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = '\\'
 vim.keymap.set('n', '<C-c>', vim.cmd.bd, { desc = 'Delete buffer' })
 vim.keymap.set('n', '<C-h>', vim.cmd.bprev, { desc = 'Previous buffer' })
 vim.keymap.set('n', '<C-l>', vim.cmd.bnext, { desc = 'Next buffer' })
