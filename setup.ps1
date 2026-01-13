@@ -5,7 +5,7 @@ $TargetDir = Join-Path $env:USERPROFILE "AppData\Local\nvim"
 if (Test-Path $TargetDir)
 {
 	Write-Host "Target already exists: $TargetDir"
-	Write-Host "Skipping symlink creation to avoid overwriting."
+	Write-Host "Skipping symlink creation..."
 } else
 {
 	New-Item -ItemType SymbolicLink -Path $TargetDir -Target $SourceNvim

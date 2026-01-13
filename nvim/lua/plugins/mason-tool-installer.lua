@@ -7,15 +7,19 @@ return {
     local installer = require 'mason-tool-installer'
     installer.setup {
       ensure_installed = {
-        'autopep8',
+        'black',
         'clang-format',
         'gdtoolkit',
         'gersemi',
+        'ktfmt',
         'prettier',
         'shfmt',
+        'sql-formatter',
         'stylua',
+        'tex-fmt',
+        'yamlfmt',
       },
     }
-    vim.keymap.set('n', '<leader>m', function() installer.check_install(true, false) end, { desc = 'Mason tools update' })
+    vim.keymap.set('n', '<leader>M', function() installer.check_install(true, false) end, { desc = 'Mason update' })
   end,
 }
