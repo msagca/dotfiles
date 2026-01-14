@@ -1,8 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.keymap.set('n', '<C-c>', vim.cmd.bd, { desc = 'Delete buffer' })
-vim.keymap.set('n', '<C-h>', vim.cmd.bprev, { desc = 'Previous buffer' })
-vim.keymap.set('n', '<C-l>', vim.cmd.bnext, { desc = 'Next buffer' })
+vim.keymap.set('n', '<C-p>', vim.cmd.bprev, { desc = 'Previous buffer' })
+vim.keymap.set('n', '<C-n>', vim.cmd.bnext, { desc = 'Next buffer' })
 vim.keymap.set('n', '<Esc>', vim.cmd.nohlsearch, { desc = 'Remove search highlights' })
 vim.keymap.set('n', '<Leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic message' })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

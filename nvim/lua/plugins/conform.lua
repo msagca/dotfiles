@@ -24,7 +24,7 @@ return {
         rust = { 'rustfmt' },
         scss = { 'prettier' },
         sh = { 'shfmt' },
-        sql = { 'sql-formatter' },
+        sql = { 'sqruff' },
         systemverilog = { 'clang-format', 'verible', stop_after_first = true },
         tex = { 'tex-fmt' },
         toml = { 'taplo' },

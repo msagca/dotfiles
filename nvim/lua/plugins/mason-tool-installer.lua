@@ -14,7 +14,7 @@ return {
         'ktfmt',
         'prettier',
         'shfmt',
-        'sql-formatter',
+        'sqruff',
         'stylua',
         'tex-fmt',
         'yamlfmt',
