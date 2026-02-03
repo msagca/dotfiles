@@ -6,6 +6,7 @@ vim.o.cursorline = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.linebreak = true
+vim.o.list = true
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.showmode = false
