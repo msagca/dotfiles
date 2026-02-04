@@ -41,11 +41,11 @@ $UserDocs = Join-Path $env:USERPROFILE "Documents"
 $DotPath = $MyInvocation.MyCommand.Path
 $DotDir = Split-Path -Parent (Resolve-Path $DotPath)
 $DotNvim = Join-Path $DotDir "nvim"
-$DotPosh = Join-Path $DotDir "ohmyposh.json"
+$DotOMP = Join-Path $DotDir "ohmyposh.json"
 $DotPS = Join-Path $DotDir "Microsoft.PowerShell_profile.ps1"
 $UserNvim = Join-Path $UserAppData "nvim"
-$UserPosh = Join-Path $UserAppData "ohmyposh.json"
+$UserOMP = Join-Path $UserAppData "ohmyposh.json"
 $UserPS = Join-Path $UserDocs "PowerShell\Microsoft.PowerShell_profile.ps1"
 New-SafeSymlink -Source $DotNvim -Target $UserNvim
-New-SafeSymlink -Source $DotPosh -Target $UserPosh
+New-SafeSymlink -Source $DotOMP -Target $UserOMP
 New-SafeSymlink -Source $DotPS -Target $UserPS

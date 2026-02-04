@@ -12,7 +12,7 @@
         {
           "type": "git",
           "style": "plain",
-          "template": "{{ .UpstreamIcon }} {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}",
+          "template": "{{ if .UpstreamIcon }}{{ .UpstreamIcon }} {{ end }} {{ .HEAD }} {{ if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}\uF044 {{ .Working.String }} {{ end }}{{ if .Staging.Changed }}\uF046 {{ .Staging.String }} {{ end }}",
           "options": {
             "fetch_status": true,
             "fetch_upstream_icon": true
@@ -27,4 +27,3 @@
     }
   ]
 }
-
