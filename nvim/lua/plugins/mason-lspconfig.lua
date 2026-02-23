@@ -24,7 +24,7 @@ return {
       -- 'omnisharp',
       -- 'omnisharp_mono',
       -- 'postgres_lsp',
-      -- 'powershell_es',
+      'powershell_es',
       -- 'pyright',
       -- 'rust_analyzer',
       -- 'tailwindcss',

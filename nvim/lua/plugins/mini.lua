@@ -33,11 +33,11 @@ return {
     notify.setup(config)
     local pick = require 'mini.pick'
     pick.setup(config)
-    vim.keymap.set('n', '<Leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
-    vim.keymap.set('n', '<Leader>f', pick.builtin.files, { desc = 'Pick from files' })
-    vim.keymap.set('n', '<Leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
-    vim.keymap.set('n', '<Leader>h', pick.builtin.help, { desc = 'Pick from help tags' })
-    vim.keymap.set('n', '<Leader>l', pick.builtin.grep_live, { desc = 'Pick from live pattern match' })
-    vim.keymap.set('n', '<Leader>r', pick.builtin.resume, { desc = 'Resume latest picker' })
+    vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
+    vim.keymap.set('n', '<leader>f', pick.builtin.files, { desc = 'Pick from files' })
+    vim.keymap.set('n', '<leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
+    vim.keymap.set('n', '<leader>h', pick.builtin.help, { desc = 'Pick from help tags' })
+    vim.keymap.set('n', '<leader>l', pick.builtin.grep_live, { desc = 'Pick from live pattern match' })
+    vim.keymap.set('n', '<leader>r', pick.builtin.resume, { desc = 'Resume latest picker' })
   end,
 }
