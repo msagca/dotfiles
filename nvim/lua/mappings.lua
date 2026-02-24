@@ -33,18 +33,17 @@ local font_name = 'Monospace'
 local font_height = 11
 local font_weight = 99
 local function get_font()
-  local name, height, weight = vim.o.guifont:match '^(.-):h(%d+):w(%d+)'
-  return name or font_name, tonumber(height) or font_height, tonumber(weight) or font_weight
+  local name = vim.o.guifont:match '^(.-):' or vim.o.guifont
+  local height = vim.o.guifont:match ':h(%d+)'
+  local weight = vim.o.guifont:match ':w(%d+)'
+  font_name = name:gsub(' ', '\\ ')
+  font_height = tonumber(height) or font_height
+  font_weight = tonumber(weight) or font_weight
+  return font_name, font_height, font_weight
 end
 local function set_font(name, height, weight)
-  local ok = pcall(function() vim.cmd('set guifont=' .. name .. ':h' .. height .. ':w' .. weight) end)
-  if ok then
-    font_name = name
-    font_height = height
-    font_weight = weight
-  else
-    vim.cmd('set guifont=' .. font_name .. ':h' .. font_height .. ':w' .. font_weight)
-  end
+  local success = pcall(function() vim.cmd('set guifont=' .. name .. ':h' .. height .. ':w' .. weight) end)
+  if success then vim.notify(vim.o.guifont, vim.log.levels.INFO) end
 end
 if vim.fn.has 'gui_running' == 1 or vim.g.neovide or vim.g.goneovim then
   vim.keymap.set('n', '<leader>+', function()
