@@ -1,12 +1,22 @@
 return {
   'catppuccin/nvim',
   name = 'catppuccin',
-  event = 'VeryLazy',
   config = function()
+    local palette = require('catppuccin.palettes').get_palette()
     require('catppuccin').setup {
       background = { dark = 'macchiato' },
-      dim_inactive = { enabled = true, percentage = 0.1 },
+      dim_inactive = { enabled = true },
+      integrations = { lualine = {}, mini = {} },
       styles = { conditionals = {}, miscs = {} },
+      term_colors = true,
+      custom_highlights = function()
+        return {
+          MiniHipatternsFixme = { bg = palette.peach },
+          MiniHipatternsHack = { bg = palette.mauve },
+          MiniHipatternsNote = { bg = palette.green },
+          MiniHipatternsTodo = { bg = palette.blue },
+        }
+      end,
     }
     vim.cmd.colorscheme 'catppuccin'
   end,

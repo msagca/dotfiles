@@ -33,6 +33,6 @@ return {
         yaml = { 'yamlfmt', 'prettier', stop_after_first = true },
       },
     }
-    vim.keymap.set('n', 'gF', function() conform.format { async = true, lsp_format = 'fallback' } end, { desc = 'Format buffer' })
+    vim.keymap.set('n', '<leader>F', function() conform.format { async = true, lsp_format = 'fallback' } end, { desc = 'Format buffer' })
   end,
 }

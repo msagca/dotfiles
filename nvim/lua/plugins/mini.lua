@@ -12,12 +12,12 @@ return {
     require('mini.jump2d').setup()
     require('mini.move').setup()
     require('mini.pairs').setup()
-    require('mini.statusline').setup()
+    -- require('mini.statusline').setup()
     require('mini.surround').setup()
     require('mini.tabline').setup()
     local diff = require 'mini.diff'
     diff.setup()
-    vim.keymap.set('n', 'go', diff.toggle_overlay, { desc = 'Diff overlay' })
+    vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })
     local hipatterns = require 'mini.hipatterns'
     hipatterns.setup {
       highlighters = {

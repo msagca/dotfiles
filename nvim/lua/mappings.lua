@@ -8,21 +8,21 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n', 'v' }, 'H', '^', { desc = 'Move to first character' })
 vim.keymap.set({ 'n', 'v' }, 'L', '$', { desc = 'Move to last character' })
-vim.keymap.set('n', '<leader>s', function()
+vim.keymap.set('n', '<leader>S', function()
   if vim.o.laststatus == 0 then
     vim.o.laststatus = 2
   else
     vim.o.laststatus = 0
   end
 end, { desc = 'Toggle statusline' })
-vim.keymap.set('n', '<leader>t', function()
+vim.keymap.set('n', '<leader>T', function()
   if vim.o.showtabline == 0 then
     vim.o.showtabline = 2
   else
     vim.o.showtabline = 0
   end
 end, { desc = 'Toggle tabline' })
-vim.keymap.set('n', '<leader>c', function()
+vim.keymap.set('n', '<leader>C', function()
   if vim.o.cmdheight == 0 then
     vim.o.cmdheight = 1
   else
