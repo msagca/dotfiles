@@ -14,7 +14,7 @@ return {
     require('mini.pairs').setup()
     -- require('mini.statusline').setup()
     require('mini.surround').setup()
-    require('mini.tabline').setup()
+    -- require('mini.tabline').setup()
     local diff = require 'mini.diff'
     diff.setup()
     vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })

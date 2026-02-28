@@ -14,6 +14,7 @@ pcall(
       require 'plugins.mini',
       require 'plugins.oil',
       require 'plugins.opencode',
+      require 'plugins.tabby',
       require 'plugins.whichkey',
     }
   end
