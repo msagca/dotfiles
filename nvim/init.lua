@@ -2,6 +2,7 @@ require 'bootstrap'
 require 'options'
 require 'mappings'
 require 'commands'
+require 'gui'
 pcall(
   function()
     require('lazy').setup {

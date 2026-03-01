@@ -31,29 +31,3 @@ vim.keymap.set('n', '<leader>C', function()
     vim.o.cmdheight = 0
   end
 end, { desc = 'Toggle command line' })
-local font_name = 'Monospace'
-local font_height = 11
-local font_weight = 99
-local function get_font()
-  local name = vim.o.guifont:match '^(.-):' or vim.o.guifont
-  local height = vim.o.guifont:match ':h(%d+)'
-  local weight = vim.o.guifont:match ':w(%d+)'
-  font_name = name:gsub(' ', '\\ ')
-  font_height = tonumber(height) or font_height
-  font_weight = tonumber(weight) or font_weight
-  return font_name, font_height, font_weight
-end
-local function set_font(name, height, weight)
-  local success = pcall(function() vim.cmd('set guifont=' .. name .. ':h' .. height .. ':w' .. weight) end)
-  if success then vim.notify(vim.o.guifont, vim.log.levels.INFO) end
-end
-if vim.fn.has 'gui_running' == 1 or vim.g.neovide or vim.g.goneovim then
-  vim.keymap.set('n', '<leader>+', function()
-    local name, height, weight = get_font()
-    set_font(name, height + 1, weight)
-  end, { desc = 'Increase font size' })
-  vim.keymap.set('n', '<leader>-', function()
-    local name, height, weight = get_font()
-    set_font(name, height - 1, weight)
-  end, { desc = 'Decrease font size' })
-end
