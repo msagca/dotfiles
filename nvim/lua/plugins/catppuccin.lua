@@ -7,7 +7,7 @@ return {
       auto_integrations = true,
       background = { dark = 'macchiato' },
       dim_inactive = { enabled = true },
-      styles = { conditionals = {}, miscs = {} },
+      no_italic = true,
       term_colors = true,
       custom_highlights = function()
         return {

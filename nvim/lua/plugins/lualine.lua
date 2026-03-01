@@ -3,11 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   event = 'VeryLazy',
   opts = {
-    options = {
-      theme = 'catppuccin',
-      component_separators = '',
-      section_separators = { left = '', right = '' },
-    },
+    options = { theme = 'catppuccin', component_separators = '', section_separators = { left = '', right = '' } },
     sections = {
       lualine_a = { { 'mode', separator = { left = '' } } },
       lualine_b = { 'filename', 'branch' },
