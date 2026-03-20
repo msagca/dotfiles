@@ -40,7 +40,6 @@ local function set_font_height(new_height)
   end
   vim.notify('No available fonts found', vim.log.levels.WARN)
 end
-vim.schedule(set_font_height)
 vim.keymap.set('n', '<leader>+', function() set_font_height(font_height + 1) end, { desc = 'Increase font size' })
 vim.keymap.set('n', '<leader>-', function() set_font_height(font_height - 1) end, { desc = 'Decrease font size' })
 vim.api.nvim_create_autocmd('OptionSet', {

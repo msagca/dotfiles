@@ -19,7 +19,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
-if vim.loop.os_uname().sysname == 'Windows_NT' then
+if vim.uv.os_uname().sysname == 'Windows_NT' then
   local handle = io.popen 'reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize /v AppsUseLightTheme'
   local result = handle:read '*a'
   handle:close()
