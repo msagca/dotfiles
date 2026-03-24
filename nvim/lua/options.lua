@@ -1,3 +1,4 @@
+vim.o.autoread = true
 vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
@@ -23,5 +24,5 @@ if vim.uv.os_uname().sysname == 'Windows_NT' then
   local handle = io.popen 'reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize /v AppsUseLightTheme'
   local result = handle:read '*a'
   handle:close()
-  if not result:match '0x0' then vim.o.background = 'light' end
+  if result:match '0x1' then vim.o.background = 'light' end
 end

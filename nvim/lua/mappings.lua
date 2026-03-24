@@ -8,8 +8,15 @@ vim.keymap.set('n', '<c-t>', vim.cmd.tabnew, { desc = 'New tab' })
 vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch, { desc = 'Remove search highlights' })
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic message' })
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set({ 'n', 'v' }, 'H', '^', { desc = 'Move to first character' })
-vim.keymap.set({ 'n', 'v' }, 'L', '$', { desc = 'Move to last character' })
+vim.keymap.set({ 'n', 'x' }, 'H', '^', { desc = 'Move to first character' })
+vim.keymap.set({ 'n', 'x' }, 'L', '$', { desc = 'Move to last character' })
+vim.keymap.set('n', '<leader>B', function()
+  if vim.o.background == 'light' then
+    vim.o.background = 'dark'
+  else
+    vim.o.background = 'light'
+  end
+end, { desc = 'Toggle background' })
 vim.keymap.set('n', '<leader>S', function()
   if vim.o.laststatus == 0 then
     vim.o.laststatus = 2
