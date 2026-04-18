@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>B', function()
 end, { desc = 'Toggle background' })
 vim.keymap.set('n', '<leader>S', function()
   if vim.o.laststatus == 0 then
-    vim.o.laststatus = 2
+    vim.o.laststatus = 3 -- always use the entire width
   else
     vim.o.laststatus = 0
   end

@@ -5,6 +5,7 @@ return {
     ensure_installed = {
       -- 'bashls',
       'clangd',
+      -- 'csharp_ls',
       -- 'cssls',
       -- 'dockerls',
       'glsl_analyzer',
@@ -22,7 +23,7 @@ return {
       -- 'omnisharp_mono',
       -- 'postgres_lsp',
       'powershell_es',
-      'pyright',
+      -- 'pyright',
       -- 'rust_analyzer',
       -- 'tailwindcss',
       'taplo',

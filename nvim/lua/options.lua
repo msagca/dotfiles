@@ -2,12 +2,12 @@ vim.o.autoread = true
 vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
-vim.o.cmdheight = 1
+vim.o.cmdheight = 0
 vim.o.completeopt = 'menu,menuone,noselect'
 vim.o.cursorline = true
 vim.o.hlsearch = true
 vim.o.ignorecase = true
-vim.o.laststatus = 2
+vim.o.laststatus = 3
 vim.o.linebreak = true
 vim.o.list = true
 vim.o.number = true
@@ -20,9 +20,3 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
-if vim.uv.os_uname().sysname == 'Windows_NT' then
-  local handle = io.popen 'reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize /v AppsUseLightTheme'
-  local result = handle:read '*a'
-  handle:close()
-  if result:match '0x1' then vim.o.background = 'light' end
-end

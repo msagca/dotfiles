@@ -63,8 +63,7 @@ vim.api.nvim_create_autocmd('OptionSet', {
         end
         if index > 0 then
           local font = table.remove(fonts, index)
-          -- move the user specified font to the front
-          table.insert(fonts, 1, font)
+          table.insert(fonts, 1, font) -- move the user specified font to the front
           return
         end
         vim.notify('New font found: ' .. name, vim.log.levels.INFO)

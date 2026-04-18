@@ -3,6 +3,7 @@ require 'options'
 require 'mappings'
 require 'commands'
 require 'gui'
+require 'theme'
 pcall(
   function()
     require('lazy').setup {
