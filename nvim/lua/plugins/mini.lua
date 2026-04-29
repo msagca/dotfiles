@@ -28,11 +28,11 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }
-    local config = { window = { config = { border = 'none' } } }
+    local window = { config = { border = 'none' } }
     local notify = require 'mini.notify'
-    notify.setup(config)
+    notify.setup { lsp_progress = { level = 'WARN' }, window = window }
     local pick = require 'mini.pick'
-    pick.setup(config)
+    pick.setup { window = window }
     vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
     vim.keymap.set('n', '<leader>f', pick.builtin.files, { desc = 'Pick from files' })
     vim.keymap.set('n', '<leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
