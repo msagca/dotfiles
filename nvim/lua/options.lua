@@ -20,3 +20,17 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.wrap = true
+vim.diagnostic.config {
+  float = false,
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { severity = { min = vim.diagnostic.severity.WARN }, spacing = 0, prefix = '' },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚',
+      [vim.diagnostic.severity.HINT] = '󰌶',
+      [vim.diagnostic.severity.INFO] = '󰋽',
+      [vim.diagnostic.severity.WARN] = '󰀪',
+    },
+  },
+}

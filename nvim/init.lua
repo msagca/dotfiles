@@ -2,7 +2,6 @@ require 'bootstrap'
 require 'options'
 require 'mappings'
 require 'commands'
-require 'gui'
 require 'theme'
 pcall(
   function()

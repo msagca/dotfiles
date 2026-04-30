@@ -12,9 +12,7 @@ return {
     require('mini.jump2d').setup()
     require('mini.move').setup()
     require('mini.pairs').setup()
-    -- require('mini.statusline').setup()
     require('mini.surround').setup()
-    -- require('mini.tabline').setup()
     local diff = require 'mini.diff'
     diff.setup()
     vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })
@@ -39,5 +37,9 @@ return {
     vim.keymap.set('n', '<leader>h', pick.builtin.help, { desc = 'Pick from help tags' })
     vim.keymap.set('n', '<leader>l', pick.builtin.grep_live, { desc = 'Pick from live pattern match' })
     vim.keymap.set('n', '<leader>r', pick.builtin.resume, { desc = 'Resume latest picker' })
+    local extra = require 'mini.extra'
+    extra.setup()
+    vim.keymap.set('n', '<leader>d', extra.pickers.diagnostic, { desc = 'Pick from diagnostics' })
+    vim.keymap.set('n', '<leader>m', extra.pickers.marks, { desc = 'Pick from marks' })
   end,
 }
