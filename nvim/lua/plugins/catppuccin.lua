@@ -11,10 +11,10 @@ return {
       term_colors = true,
       custom_highlights = function()
         return {
-          MiniHipatternsFixme = { bg = palette.peach },
-          MiniHipatternsHack = { bg = palette.mauve },
-          MiniHipatternsNote = { bg = palette.green },
-          MiniHipatternsTodo = { bg = palette.blue },
+          MiniHipatternsFixme = { bg = palette.maroon }, -- FIXME
+          MiniHipatternsHack = { bg = palette.peach }, -- HACK
+          MiniHipatternsNote = { bg = palette.mauve }, -- NOTE
+          MiniHipatternsTodo = { bg = palette.lavender }, -- TODO
         }
       end,
     }

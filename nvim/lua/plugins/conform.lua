@@ -25,11 +25,11 @@ return {
         scss = { 'prettier' },
         sh = { 'shfmt' },
         sql = { 'sqruff' },
-        systemverilog = { 'clang-format', 'verible', stop_after_first = true },
+        systemverilog = { 'clang-format' },
         tex = { 'tex-fmt' },
         toml = { 'taplo' },
         typescript = { 'prettier' },
-        verilog = { 'clang-format', 'verible', stop_after_first = true },
+        verilog = { 'clang-format' },
         yaml = { 'yamlfmt', 'prettier', stop_after_first = true },
       },
     }

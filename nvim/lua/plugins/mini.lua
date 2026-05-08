@@ -4,14 +4,13 @@ return {
   event = 'VeryLazy',
   config = function()
     require('mini.comment').setup()
-    require('mini.completion').setup()
-    require('mini.cursorword').setup()
     require('mini.git').setup()
     require('mini.icons').setup()
     require('mini.jump').setup()
     require('mini.jump2d').setup()
     require('mini.move').setup()
     require('mini.pairs').setup()
+    require('mini.statusline').setup()
     require('mini.surround').setup()
     local diff = require 'mini.diff'
     diff.setup()
@@ -26,11 +25,8 @@ return {
         hex_color = hipatterns.gen_highlighter.hex_color(),
       },
     }
-    local window = { config = { border = 'none' } }
-    local notify = require 'mini.notify'
-    notify.setup { lsp_progress = { level = 'WARN' }, window = window }
     local pick = require 'mini.pick'
-    pick.setup { window = window }
+    pick.setup { window = { config = { border = 'none' } } }
     vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
     vim.keymap.set('n', '<leader>f', pick.builtin.files, { desc = 'Pick from files' })
     vim.keymap.set('n', '<leader>g', pick.builtin.grep, { desc = 'Pick from pattern match' })
