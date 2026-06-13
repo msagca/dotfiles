@@ -1,3 +1,4 @@
+require 'vim._core.ui2'
 require 'options'
 require 'keymap'
 require 'autocmd'

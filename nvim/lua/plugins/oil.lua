@@ -1,5 +1,7 @@
 require('oil').setup {
+  delete_to_trash = true,
   use_default_keymaps = false,
+  view_options = { show_hidden = true },
   keymaps = {
     ['-'] = { 'actions.parent', mode = 'n', desc = 'Open parent directory' },
     ['<c-c>'] = { 'actions.close', mode = 'n', desc = 'Close file explorer' },
@@ -9,6 +11,5 @@ require('oil').setup {
     ['<leader>?'] = { 'actions.show_help', mode = 'n', desc = 'Show help' },
     ['<tab>'] = { 'actions.preview', desc = 'Preview file' },
   },
-  view_options = { show_hidden = true },
 }
 vim.keymap.set('n', '-', vim.cmd.Oil, { desc = 'Open file explorer' })
