@@ -4,7 +4,6 @@ require('mini.jump').setup()
 require('mini.jump2d').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
--- require('mini.statusline').setup()
 require('mini.surround').setup()
 local pick = require 'mini.pick'
 pick.setup { window = { config = { border = 'none' } } }

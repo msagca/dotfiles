@@ -1,7 +1,29 @@
 require('lualine').setup {
   options = { theme = 'melange', component_separators = {}, section_separators = { left = '', right = '' } },
   sections = {
-    lualine_a = { { 'mode', separator = { left = '' } } },
+    lualine_a = {
+      {
+        'mode',
+        separator = { left = '' },
+        fmt = function()
+          local icons = {
+            ['R'] = ' ',
+            ['S'] = ' ',
+            ['V'] = ' ',
+            ['\22'] = ' ',
+            ['c'] = ' ',
+            ['i'] = ' ',
+            ['s'] = ' ',
+            ['t'] = ' ',
+            ['v'] = ' ',
+          }
+          local mode = vim.fn.mode()
+          local icon = icons[mode]
+          if icon then return icon end
+          return ' '
+        end,
+      },
+    },
     lualine_b = { 'filename', 'branch', 'diff' },
     lualine_c = { '%=' },
     lualine_x = {},

@@ -1,5 +1,4 @@
 require('oil').setup {
-  delete_to_trash = true,
   use_default_keymaps = false,
   view_options = { show_hidden = true },
   keymaps = {
