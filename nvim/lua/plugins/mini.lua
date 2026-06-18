@@ -4,14 +4,19 @@ require('mini.jump').setup()
 require('mini.jump2d').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
+require('mini.statusline').setup()
 require('mini.surround').setup()
+require('mini.tabline').setup()
 local diff = require 'mini.diff'
 local extra = require 'mini.extra'
 local hipatterns = require 'mini.hipatterns'
+local notify = require 'mini.notify'
 local pick = require 'mini.pick'
+local window = { config = { border = 'none' } }
 diff.setup()
 extra.setup()
-pick.setup { window = { config = { border = 'none' } } }
+notify.setup { lsp_progress = { level = 'WARN' }, window = window }
+pick.setup { window = window }
 hipatterns.setup {
   highlighters = {
     fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
