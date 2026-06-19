@@ -9,7 +9,6 @@ require('mini.tabline').setup { show_icons = false }
 local diff = require 'mini.diff'
 local extra = require 'mini.extra'
 local hipatterns = require 'mini.hipatterns'
-local notify = require 'mini.notify'
 local pick = require 'mini.pick'
 local statusline = require 'mini.statusline'
 diff.setup()
@@ -22,28 +21,47 @@ hipatterns.setup {
     note = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
   },
 }
-local window_config = { config = { border = 'none' } }
-notify.setup { lsp_progress = { level = 'WARN' }, window = window_config }
-pick.setup { source = { show = pick.default_show }, window = window_config }
+pick.setup { source = { show = pick.default_show }, window = { config = { border = 'none' } } }
 statusline.setup {
   content = {
     active = function()
+      local icons = {
+        ['R'] = '',
+        ['S'] = '',
+        ['V'] = '',
+        ['\22'] = '',
+        ['c'] = '',
+        ['i'] = '',
+        ['s'] = '',
+        ['t'] = '',
+        ['v'] = '',
+      }
+      local mode = vim.fn.mode()
+      local icon = icons[mode]
+      if not icon then icon = '' end
+      local _, mode_hl = statusline.section_mode {}
       local diagnostics = statusline.section_diagnostics {}
+      local fileinfo = statusline.section_fileinfo {}
       local filename = statusline.section_filename {}
       local location = statusline.section_location {}
-      local mode, mode_hl = statusline.section_mode {}
       local search = statusline.section_searchcount {}
       return statusline.combine_groups {
-        { hl = mode_hl, strings = { mode } },
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        { hl = mode_hl, strings = { icon } },
         { hl = 'MiniStatuslineDevinfo', strings = { diagnostics } },
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
         '%=',
+        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
         { hl = mode_hl, strings = { search, location } },
       }
     end,
     inactive = function()
+      local fileinfo = statusline.section_fileinfo {}
       local filename = statusline.section_filename {}
-      return statusline.combine_groups { { hl = 'MiniStatuslineFilename', strings = { filename } }, '%=' }
+      return statusline.combine_groups {
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        '%=',
+        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
+      }
     end,
   },
 }
