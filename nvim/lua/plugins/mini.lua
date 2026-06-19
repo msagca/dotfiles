@@ -4,26 +4,47 @@ require('mini.jump').setup()
 require('mini.jump2d').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
-require('mini.statusline').setup()
 require('mini.surround').setup()
-require('mini.tabline').setup()
+require('mini.tabline').setup { show_icons = false }
 local diff = require 'mini.diff'
 local extra = require 'mini.extra'
 local hipatterns = require 'mini.hipatterns'
 local notify = require 'mini.notify'
 local pick = require 'mini.pick'
-local window = { config = { border = 'none' } }
+local statusline = require 'mini.statusline'
 diff.setup()
 extra.setup()
-notify.setup { lsp_progress = { level = 'WARN' }, window = window }
-pick.setup { window = window }
 hipatterns.setup {
   highlighters = {
-    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-    hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-    note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-    todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-    hex_color = hipatterns.gen_highlighter.hex_color(),
+    fixme = { pattern = 'FIXME', group = 'MiniHipatternsFixme' },
+    hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
+    todo = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
+    note = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
+  },
+}
+local window_config = { config = { border = 'none' } }
+notify.setup { lsp_progress = { level = 'WARN' }, window = window_config }
+pick.setup { source = { show = pick.default_show }, window = window_config }
+statusline.setup {
+  content = {
+    active = function()
+      local diagnostics = statusline.section_diagnostics {}
+      local filename = statusline.section_filename {}
+      local location = statusline.section_location {}
+      local mode, mode_hl = statusline.section_mode {}
+      local search = statusline.section_searchcount {}
+      return statusline.combine_groups {
+        { hl = mode_hl, strings = { mode } },
+        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        { hl = 'MiniStatuslineDevinfo', strings = { diagnostics } },
+        '%=',
+        { hl = mode_hl, strings = { search, location } },
+      }
+    end,
+    inactive = function()
+      local filename = statusline.section_filename {}
+      return statusline.combine_groups { { hl = 'MiniStatuslineFilename', strings = { filename } }, '%=' }
+    end,
   },
 }
 vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })
