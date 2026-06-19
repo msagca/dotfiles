@@ -1,3 +1,6 @@
 local opencode = require 'opencode'
-vim.keymap.set('n', '<leader>o', function() opencode.toggle() end, { desc = 'Toggle OpenCode' })
-vim.keymap.set({ 'n', 'x' }, '<c-a>', function() opencode.ask('@this ', { submit = true }) end, { desc = 'Ask OpenCode' })
+vim.keymap.set({ 'n', 'x' }, '<leader>a', function()
+  vim.ui.input({ default = '@this ' }, function(input)
+    if input then opencode.ask(input) end
+  end)
+end, { desc = 'Ask OpenCode' })
