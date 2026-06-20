@@ -3,6 +3,7 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     -- 'bashls',
     'clangd',
+    'copilot',
     -- 'csharp_ls',
     -- 'cssls',
     -- 'dockerls',
