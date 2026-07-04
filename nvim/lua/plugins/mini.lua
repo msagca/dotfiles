@@ -1,3 +1,4 @@
+require('mini.cursorword').setup()
 require('mini.git').setup()
 require('mini.icons').setup()
 require('mini.jump').setup()
@@ -65,7 +66,7 @@ statusline.setup {
   },
 }
 vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })
-vim.keymap.set('n', '<leader>H', extra.pickers.git_hunks, { desc = 'Pick from Git hunks' })
+vim.keymap.set('n', '<leader>G', extra.pickers.git_hunks, { desc = 'Pick from Git hunks' })
 vim.keymap.set('n', '<leader>L', extra.pickers.lsp, { desc = 'Pick from LSP' })
 vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
 vim.keymap.set('n', '<leader>d', extra.pickers.diagnostic, { desc = 'Pick from diagnostics' })
