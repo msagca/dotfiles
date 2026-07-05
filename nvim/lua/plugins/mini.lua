@@ -6,22 +6,54 @@ require('mini.move').setup()
 require('mini.pairs').setup()
 require('mini.surround').setup()
 require('mini.tabline').setup { show_icons = false }
+local clue = require 'mini.clue'
 local diff = require 'mini.diff'
 local extra = require 'mini.extra'
 local hipatterns = require 'mini.hipatterns'
 local pick = require 'mini.pick'
 local statusline = require 'mini.statusline'
+clue.setup {
+  clues = {
+    clue.gen_clues.builtin_completion(),
+    clue.gen_clues.g(),
+    clue.gen_clues.marks(),
+    clue.gen_clues.registers(),
+    clue.gen_clues.square_brackets(),
+    clue.gen_clues.windows(),
+    clue.gen_clues.z(),
+  },
+  triggers = {
+    { mode = 'i', keys = '<c-x>' },
+    { mode = 'n', keys = '<c-w>' },
+    { mode = 'n', keys = '[' },
+    { mode = 'n', keys = ']' },
+    { mode = { 'i', 'c' }, keys = '<c-r>' },
+    { mode = { 'n', 'x' }, keys = "'" },
+    { mode = { 'n', 'x' }, keys = '"' },
+    { mode = { 'n', 'x' }, keys = '<leader>' },
+    { mode = { 'n', 'x' }, keys = '`' },
+    { mode = { 'n', 'x' }, keys = 'g' },
+    { mode = { 'n', 'x' }, keys = 'z' },
+  },
+  window = { config = { border = 'none', width = 'auto' }, delay = 200 },
+}
 diff.setup()
 extra.setup()
 hipatterns.setup {
   highlighters = {
     fixme = { pattern = 'FIXME', group = 'MiniHipatternsFixme' },
     hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
-    todo = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
     note = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
+    todo = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
   },
 }
-pick.setup { source = { show = pick.default_show }, window = { config = { border = 'none' } } }
+pick.setup {
+  source = { show = pick.default_show },
+  window = {
+    config = function() return { border = 'none', height = math.floor(0.5 * vim.o.lines), width = math.floor(0.5 * vim.o.columns) } end,
+    prompt_caret = '',
+  },
+}
 statusline.setup {
   content = {
     active = function()

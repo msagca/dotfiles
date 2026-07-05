@@ -26,5 +26,5 @@ vim.diagnostic.config {
   float = false,
   underline = true,
   update_in_insert = false,
-  virtual_text = { severity = { min = vim.diagnostic.severity.WARN }, spacing = 0, prefix = '' },
+  virtual_text = { prefix = '', severity = { min = vim.diagnostic.severity.WARN }, spacing = 0 },
 }

@@ -1,5 +1,5 @@
 require('koda').setup {
-  styles = { functions = {}, keywords = {}, comments = {}, strings = {}, constants = {} },
-  theme = { light = 'glade', dark = 'moss' },
+  styles = { comments = {}, constants = {}, functions = {}, keywords = {}, strings = {} },
+  theme = { dark = 'moss', light = 'glade' },
 }
 vim.cmd.colorscheme 'koda'
