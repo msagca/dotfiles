@@ -9,8 +9,8 @@ vim.keymap.set('n', '<esc>', vim.cmd.nohlsearch, { desc = 'Remove search highlig
 vim.keymap.set('n', '<leader>U', vim.pack.update, { desc = 'Update plugins' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set({ 'n', 'x' }, 'H', '^', { desc = 'Move to first character' })
-vim.keymap.set({ 'n', 'x' }, 'L', '$', { desc = 'Move to last character' })
+vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { desc = 'Move to first character' })
+vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { desc = 'Move to last character' })
 vim.keymap.set('n', '<leader>B', function()
   if vim.o.background == 'light' then
     vim.o.background = 'dark'

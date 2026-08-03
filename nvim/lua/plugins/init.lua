@@ -6,6 +6,8 @@ vim.pack.add {
   'https://github.com/mason-org/mason.nvim',
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/nvim-mini/mini.nvim',
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
   'https://github.com/oskarnurm/koda.nvim',
   'https://github.com/stevearc/conform.nvim',
   'https://github.com/stevearc/oil.nvim',
@@ -17,3 +19,5 @@ require 'plugins.mason'
 require 'plugins.mini'
 require 'plugins.oil'
 require 'plugins.sidekick'
+require 'plugins.treesitter'
+require 'plugins.treesitter-textobjects'

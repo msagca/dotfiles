@@ -18,7 +18,7 @@ require('mason-lspconfig').setup {
     'lua_ls',
     -- 'marksman',
     -- 'ols',
-    -- 'omnisharp',
+    'omnisharp',
     -- 'omnisharp_mono',
     -- 'postgres_lsp',
     'powershell_es',
