@@ -1,17 +1,15 @@
-local shaderlab = vim.fs.normalize '~/tree-sitter-shaderlab'
-local has_shaderlab = vim.uv.fs_stat(vim.fs.joinpath(shaderlab, 'grammar.js')) ~= nil
-if has_shaderlab then
-  vim.api.nvim_create_autocmd('User', {
-    pattern = 'TSUpdate',
-    callback = function()
-      require('nvim-treesitter.parsers').shaderlab = { install_info = { path = shaderlab, queries = 'queries' } }
-    end,
-  })
-  vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'shaderlab',
-    callback = function(args) pcall(vim.treesitter.start, args.buf) end,
-  })
-end
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TSUpdate',
+  callback = function()
+    require('nvim-treesitter.parsers').shaderlab = {
+      install_info = { url = 'https://github.com/msagca/tree-sitter-shaderlab', queries = 'queries' },
+    }
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'shaderlab',
+  callback = function(args) pcall(vim.treesitter.start, args.buf) end,
+})
 local parsers = {
   'bash',
   'c',
@@ -37,6 +35,7 @@ local parsers = {
   'query',
   'ruby',
   'rust',
+  'shaderlab',
   'slang',
   'sql',
   'swift',
@@ -49,5 +48,4 @@ local parsers = {
   'yaml',
   'zig',
 }
-if has_shaderlab then table.insert(parsers, 'shaderlab') end
 require('nvim-treesitter').install(parsers)
