@@ -1,9 +1,11 @@
+require 'plugins.hooks'
 vim.pack.add {
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/folke/sidekick.nvim',
   'https://github.com/mason-org/mason-lspconfig.nvim',
   'https://github.com/mason-org/mason.nvim',
+  'https://github.com/msagca/shaderlab-ls',
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/nvim-mini/mini.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -18,6 +20,7 @@ require 'plugins.lazydev'
 require 'plugins.mason'
 require 'plugins.mini'
 require 'plugins.oil'
+require 'plugins.shaderlab-ls'
 require 'plugins.sidekick'
 require 'plugins.treesitter'
 require 'plugins.treesitter-textobjects'

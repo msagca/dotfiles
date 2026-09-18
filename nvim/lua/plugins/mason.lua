@@ -11,7 +11,7 @@ require('mason-lspconfig').setup {
     -- 'gopls',
     -- 'graphql',
     -- 'html',
-    -- 'jdtls',
+    'jdtls',
     'jsonls',
     -- 'kotlin_language_server',
     -- 'lemminx',

@@ -1,6 +1,12 @@
 local conform = require 'conform'
 conform.setup {
   format_after_save = { lsp_format = 'fallback' },
+  formatters = {
+    shaderlab_ls = {
+      command = function() return vim.lsp.config.shaderlab_ls.cmd[1] end,
+      args = function(_, ctx) return { '--format', '-', '--assume-filename', ctx.filename } end,
+    },
+  },
   formatters_by_ft = {
     bash = { 'shfmt' },
     c = { 'clang-format' },
@@ -19,6 +25,7 @@ conform.setup {
     python = { 'black' },
     rust = { 'rustfmt' },
     scss = { 'prettier' },
+    shaderlab = { 'shaderlab_ls' },
     sh = { 'shfmt' },
     sql = { 'sqruff' },
     systemverilog = { 'clang-format' },
