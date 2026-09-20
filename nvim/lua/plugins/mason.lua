@@ -22,7 +22,7 @@ require('mason-lspconfig').setup {
     -- 'omnisharp_mono',
     -- 'postgres_lsp',
     'powershell_es',
-    -- 'pyright',
+    'pyright',
     'roslyn_ls',
     -- 'rust_analyzer',
     -- 'tailwindcss',

@@ -1,4 +1,3 @@
--- must be required before vim.pack.add, which fires PackChanged
 local shaderlab_build = vim.fn.has 'win32' == 1 and { 'cmd.exe', '/c', 'build.cmd' } or { 'sh', 'build.sh' }
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(args)
