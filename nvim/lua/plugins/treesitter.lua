@@ -6,8 +6,18 @@ vim.api.nvim_create_autocmd('User', {
     }
   end,
 })
+vim.filetype.add {
+  extension = {
+    cginc = 'hlsl',
+    compute = 'hlsl',
+    hlsl = 'hlsl',
+    hlsli = 'hlsl',
+    ush = 'hlsl',
+    usf = 'hlsl',
+  },
+}
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'shaderlab',
+  pattern = { 'hlsl', 'shaderlab' },
   callback = function(args) pcall(vim.treesitter.start, args.buf) end,
 })
 local parsers = {
