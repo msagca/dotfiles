@@ -3,7 +3,7 @@ conform.setup {
   format_after_save = { lsp_format = 'fallback' },
   formatters = {
     shaderlab_ls = {
-      command = function() return vim.lsp.config.shaderlab_ls.cmd[1] end,
+      command = function() return vim.lsp.config.shaderlab_ls.executable() end,
       args = function(_, ctx) return { '--format', '-', '--assume-filename', ctx.filename } end,
     },
   },

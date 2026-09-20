@@ -1,4 +1,3 @@
-require 'plugins.hooks'
 vim.pack.add {
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   'https://github.com/folke/lazydev.nvim',
