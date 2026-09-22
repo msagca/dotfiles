@@ -1,10 +1,9 @@
-vim.o.autocomplete = true
 vim.o.autoread = true
 vim.o.background = 'dark'
 vim.o.breakindent = true
 vim.o.clipboard = 'unnamedplus'
 vim.o.cmdheight = 1
-vim.o.completeopt = 'fuzzy,menuone,noselect,nosort'
+vim.o.completeopt = 'fuzzy,menuone,noselect'
 vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.hlsearch = true
@@ -25,7 +24,6 @@ vim.o.splitright = true
 vim.o.tabstop = 2
 vim.o.termguicolors = true
 vim.o.wrap = true
-vim.opt.complete:append 'o'
 vim.diagnostic.config {
   float = false,
   underline = true,

@@ -1,3 +1,4 @@
+require('mini.completion').setup()
 require('mini.cursorword').setup()
 require('mini.git').setup()
 require('mini.icons').setup()
