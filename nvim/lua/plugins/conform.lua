@@ -2,6 +2,7 @@ local conform = require 'conform'
 conform.setup {
   format_after_save = { lsp_format = 'fallback' },
   formatters = {
+    black = { args = function(_, ctx) return { '--stdin-filename', (ctx.filename:gsub('%.ipynb$', '.py')), '--quiet', '-' } end },
     shaderlab_ls = {
       command = function() return vim.lsp.config.shaderlab_ls.executable() end,
       args = function(_, ctx) return { '--format', '-', '--assume-filename', ctx.filename } end,

@@ -1,4 +1,5 @@
 vim.pack.add {
+  'https://github.com/msagca/jupytext.nvim',
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/folke/sidekick.nvim',
@@ -14,6 +15,7 @@ vim.pack.add {
   'https://github.com/stevearc/oil.nvim',
 }
 require 'plugins.conform'
+require 'plugins.jupytext'
 require 'plugins.koda'
 require 'plugins.lazydev'
 require 'plugins.mason'

@@ -3,7 +3,7 @@ require('mason-lspconfig').setup {
   ensure_installed = {
     -- 'bashls',
     'clangd',
-    'copilot',
+    -- 'copilot',
     -- 'csharp_ls',
     -- 'cssls',
     -- 'dockerls',
@@ -40,6 +40,7 @@ require('mason-tool-installer').setup {
     'clang-format',
     -- 'gdtoolkit',
     'gersemi',
+    'jupytext',
     -- 'ktfmt',
     'prettier',
     'shfmt',
