@@ -4,10 +4,14 @@ vim.api.nvim_create_autocmd('User', {
     require('nvim-treesitter.parsers').shaderlab = { install_info = { url = 'https://github.com/msagca/tree-sitter-shaderlab', queries = 'queries' } }
   end,
 })
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'glsl', 'hlsl', 'shaderlab' },
-  callback = function(args) pcall(vim.treesitter.start, args.buf) end,
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    if ev.data.spec.name ~= 'nvim-treesitter' or ev.data.kind ~= 'update' then return end
+    if not ev.data.active then vim.cmd.packadd 'nvim-treesitter' end
+    vim.cmd.TSUpdate()
+  end,
 })
+vim.api.nvim_create_autocmd('FileType', { callback = function(args) pcall(vim.treesitter.start, args.buf) end })
 local parsers = {
   'bash',
   'c',

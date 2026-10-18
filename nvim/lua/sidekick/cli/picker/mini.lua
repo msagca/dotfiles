@@ -1,10 +1,6 @@
 ---@module 'mini.pick'
 local M = {}
-M.sources = {
-  buffers = 'buffers',
-  files = 'files',
-  grep = 'grep',
-}
+M.sources = { buffers = 'buffers', files = 'files', grep = 'grep' }
 ---@param source string
 ---@param cb fun(items:sidekick.context.Loc[])
 ---@param opts? table

@@ -46,7 +46,6 @@ require('mason-tool-installer').setup {
     'shfmt',
     -- 'sqruff',
     'stylua',
-    'taplo',
     'tex-fmt',
     'yamlfmt',
   },

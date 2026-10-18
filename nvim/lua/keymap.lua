@@ -11,31 +11,10 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 vim.keymap.set('t', '<c-q>', '<c-\\><c-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'H', '^', { desc = 'Move to first character' })
 vim.keymap.set({ 'n', 'x', 'o' }, 'L', '$', { desc = 'Move to last character' })
-vim.keymap.set('n', '<leader>B', function()
-  if vim.o.background == 'light' then
-    vim.o.background = 'dark'
-  else
-    vim.o.background = 'light'
-  end
-end, { desc = 'Toggle background' })
-vim.keymap.set('n', '<leader>S', function()
-  if vim.o.laststatus == 0 then
-    vim.o.laststatus = 3
-  else
-    vim.o.laststatus = 0
-  end
-end, { desc = 'Toggle statusline' })
+vim.keymap.set('n', '<leader>B', function() vim.o.background = vim.o.background == 'light' and 'dark' or 'light' end, { desc = 'Toggle background' })
+vim.keymap.set('n', '<leader>S', function() vim.o.laststatus = vim.o.laststatus == 0 and 3 or 0 end, { desc = 'Toggle statusline' })
 vim.keymap.set('n', '<leader>T', function()
-  if vim.o.showtabline == 0 then
-    vim.o.showtabline = 1
-  else
-    vim.o.showtabline = 0
-  end
+  vim.g.hide_tabline = not vim.g.hide_tabline
+  vim.api.nvim_exec_autocmds('User', { pattern = 'TablineUpdate' })
 end, { desc = 'Toggle tabline' })
-vim.keymap.set('n', '<leader>C', function()
-  if vim.o.cmdheight == 0 then
-    vim.o.cmdheight = 1
-  else
-    vim.o.cmdheight = 0
-  end
-end, { desc = 'Toggle command line' })
+vim.keymap.set('n', '<leader>C', function() vim.o.cmdheight = vim.o.cmdheight == 0 and 1 or 0 end, { desc = 'Toggle command line' })

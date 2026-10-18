@@ -3,6 +3,7 @@ require('mini.cursorword').setup()
 require('mini.git').setup()
 require('mini.icons').setup()
 require('mini.jump').setup()
+require('mini.jump2d').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
 require('mini.surround').setup()
@@ -51,24 +52,14 @@ hipatterns.setup {
 pick.setup {
   source = { show = pick.default_show },
   window = {
-    config = function() return { border = 'none', height = math.floor(0.5 * vim.o.lines), width = math.floor(0.5 * vim.o.columns) } end,
+    config = function() return { border = 'none', height = math.floor(0.5 * vim.o.lines), width = math.floor(0.7 * vim.o.columns) } end,
     prompt_caret = '',
   },
 }
 statusline.setup {
   content = {
     active = function()
-      local icons = {
-        ['R'] = '',
-        ['S'] = '',
-        ['V'] = '',
-        ['\22'] = '',
-        ['c'] = '',
-        ['i'] = '',
-        ['s'] = '',
-        ['t'] = '',
-        ['v'] = '',
-      }
+      local icons = { ['R'] = '', ['S'] = '', ['V'] = '', ['\22'] = '', ['c'] = '', ['i'] = '', ['s'] = '', ['t'] = '', ['v'] = '' }
       local mode = vim.fn.mode()
       local icon = icons[mode]
       if not icon then icon = '' end
@@ -76,12 +67,14 @@ statusline.setup {
       local diagnostics = statusline.section_diagnostics {}
       local fileinfo = statusline.section_fileinfo {}
       local filename = statusline.section_filename {}
+      local changes = statusline.section_diff {}
+      local git = statusline.section_git {}
       local location = statusline.section_location {}
       local search = statusline.section_searchcount {}
       return statusline.combine_groups {
         { hl = mode_hl, strings = { icon } },
         { hl = 'MiniStatuslineDevinfo', strings = { diagnostics } },
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
+        { hl = 'MiniStatuslineFilename', strings = { filename, git, changes } },
         '%=',
         { hl = 'MiniStatuslineFileinfo', strings = { fileinfo } },
         { hl = mode_hl, strings = { search, location } },
@@ -100,7 +93,6 @@ statusline.setup {
 }
 vim.keymap.set('n', '<leader>D', diff.toggle_overlay, { desc = 'Toggle diff overlay' })
 vim.keymap.set('n', '<leader>G', extra.pickers.git_hunks, { desc = 'Pick from Git hunks' })
-vim.keymap.set('n', '<leader>L', extra.pickers.lsp, { desc = 'Pick from LSP' })
 vim.keymap.set('n', '<leader>b', pick.builtin.buffers, { desc = 'Pick from buffers' })
 vim.keymap.set('n', '<leader>d', extra.pickers.diagnostic, { desc = 'Pick from diagnostics' })
 vim.keymap.set('n', '<leader>f', pick.builtin.files, { desc = 'Pick from files' })
