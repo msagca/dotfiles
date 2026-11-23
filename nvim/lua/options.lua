@@ -16,4 +16,4 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.tabstop = 2
 vim.o.termguicolors = true
-vim.diagnostic.config { float = false, virtual_text = { prefix = '', severity = { min = vim.diagnostic.severity.WARN }, spacing = 0 } }
+vim.diagnostic.config { float = false, underline = { severity = { min = vim.diagnostic.severity.WARN } }, virtual_text = { prefix = '', severity = { min = vim.diagnostic.severity.WARN }, spacing = 0 } }
