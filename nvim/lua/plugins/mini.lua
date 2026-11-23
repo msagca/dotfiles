@@ -1,4 +1,5 @@
 require('mini.completion').setup()
+vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
 require('mini.cursorword').setup()
 require('mini.git').setup()
 require('mini.icons').setup()
@@ -7,7 +8,7 @@ require('mini.jump2d').setup()
 require('mini.move').setup()
 require('mini.pairs').setup()
 require('mini.surround').setup()
-require('mini.tabline').setup { show_icons = false }
+require('mini.tabline').setup { set_vim_settings = false, show_icons = false }
 local clue = require 'mini.clue'
 local diff = require 'mini.diff'
 local extra = require 'mini.extra'
@@ -43,10 +44,10 @@ diff.setup()
 extra.setup()
 hipatterns.setup {
   highlighters = {
-    fixme = { pattern = 'FIXME', group = 'MiniHipatternsFixme' },
-    hack = { pattern = 'HACK', group = 'MiniHipatternsHack' },
-    note = { pattern = 'NOTE', group = 'MiniHipatternsNote' },
-    todo = { pattern = 'TODO', group = 'MiniHipatternsTodo' },
+    fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+    hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+    note = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+    todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
   },
 }
 pick.setup {
