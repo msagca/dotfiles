@@ -14,7 +14,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
 vim.api.nvim_create_autocmd('FileType', { callback = function(args) pcall(vim.treesitter.start, args.buf) end })
 local parsers = {
   'bash',
-  'c',
   'c_sharp',
   'cmake',
   'cpp',
@@ -28,9 +27,6 @@ local parsers = {
   'json',
   -- 'kotlin',
   'latex',
-  'lua',
-  'markdown',
-  'markdown_inline',
   -- 'odin',
   -- 'powershell',
   'python',
@@ -45,8 +41,6 @@ local parsers = {
   -- 'tcl',
   'toml',
   -- 'typescript',
-  'vim',
-  'vimdoc',
   'yaml',
   -- 'zig',
 }
