@@ -1,3 +1,4 @@
 *.json
 .vs/
 .vscode/
+!*.omp.json

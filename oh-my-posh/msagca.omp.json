@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "white": "#FFFFFF",
+    "tan": "#CC3802",
+    "teal": "#047E84",
+    "plum": "#9A348E",
+    "blush": "#DA627D",
+    "salmon": "#FCA17D",
+    "sky": "#86BBD8",
+    "teal_blue": "#33658A"
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:teal",
+          "options": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "fetch_version": false
+          },
+          "template": " \uec39 {{ .Venv }} "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:plum",
+          "options": {
+            "style": "agnoster_short",
+            "max_depth": 3
+          },
+          "template": " \uea83 {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:blush",
+          "options": {
+            "branch_icon": "",
+            "fetch_status": false
+          },
+          "template": " \uec6f {{ .HEAD }} "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:salmon",
+          "options": {
+            "fetch_status": true,
+            "fetch_stash_count": true
+          },
+          "template": "{{ if .Staging.Changed }} \ueadc {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \ueade {{ .Working.String }}{{ end }}{{ if not (or .Staging.Changed .Working.Changed) }} \ueab2{{ end }}{{ if gt .StashCount 0 }} \uec26 {{ .StashCount }}{{ end }}{{ if gt .Ahead 0 }} \ueaa1{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uea9a{{ .Behind }}{{ end }} "
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:tan",
+          "template": " \ueb53 admin "
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:sky",
+          "options": {
+            "threshold": 3000,
+            "style": "austin"
+          },
+          "template": " \ueb7c {{ .FormattedMs }} "
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:teal_blue",
+          "template": " \uea87 {{ .Code }} "
+        }
+      ]
+    }
+  ],
+  "final_space": true,
+  "version": 4
+}
