@@ -1,6 +1,7 @@
 vim.pack.add {
   'https://github.com/msagca/jupytext.nvim',
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  'https://github.com/b0o/SchemaStore.nvim',
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/folke/sidekick.nvim',
   'https://github.com/mason-org/mason-lspconfig.nvim',
@@ -21,6 +22,7 @@ require 'plugins.lazydev'
 require 'plugins.mason'
 require 'plugins.mini'
 require 'plugins.oil'
+require 'plugins.schemastore'
 require 'plugins.shaderlab-ls'
 require 'plugins.sidekick'
 require 'plugins.treesitter'
