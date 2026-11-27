@@ -8,7 +8,9 @@
     "blush": "#DA627D",
     "salmon": "#FCA17D",
     "sky": "#86BBD8",
-    "teal_blue": "#33658A"
+    "teal_blue": "#33658A",
+    "mint": "#8FD3B0",
+    "lavender": "#B5A8E3"
   },
   "blocks": [
     {
@@ -84,6 +86,16 @@
           "foreground": "p:white",
           "background": "p:teal_blue",
           "template": " \uea87 {{ .Code }} "
+        },
+        {
+          "type": "vimode",
+          "style": "plain",
+          "foreground": "p:white",
+          "background": "p:mint",
+          "background_templates": [
+            "{{ if eq .Mode \"normal\" }}p:lavender{{ end }}"
+          ],
+          "template": " {{ if eq .Mode \"normal\" }}\uf27d{{ else }}\uf044{{ end }} "
         }
       ]
     }
