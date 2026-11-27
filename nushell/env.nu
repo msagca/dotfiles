@@ -1,0 +1,1 @@
+if (which oh-my-posh | is-not-empty) { let autoload = ($nu.data-dir | path join vendor autoload); mkdir $autoload; oh-my-posh init nu --print --config ("~/.config/oh-my-posh/msagca.omp.json" | path expand) | save -f ($autoload | path join oh-my-posh.nu) }
