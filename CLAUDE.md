@@ -1,6 +1,7 @@
 # Git workflow
 
 - Work on `main` and push directly to `main`. Do not create feature branches or pull requests for this repository.
+- The repository has issues and pull requests turned off. Record a problem and its diagnosis (the cause, the findings of an investigation) in the message of the commit that fixes it, not in an issue.
 - The repository is public. Keep usernames, work emails and machine-specific paths out of every file; use `~`, `$HOME` or environment variables. Commit as `msagca <51697294+msagca@users.noreply.github.com>`.
 
 # Setup scripts
