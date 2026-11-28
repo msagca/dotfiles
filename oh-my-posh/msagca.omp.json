@@ -60,7 +60,7 @@
             "fetch_status": true,
             "fetch_stash_count": true
           },
-          "template": "{{ if .Staging.Changed }} \ueadc {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \ueade {{ .Working.String }}{{ end }}{{ if not (or .Staging.Changed .Working.Changed) }} \ueab2{{ end }}{{ if gt .StashCount 0 }} \uec26 {{ .StashCount }}{{ end }}{{ if gt .Ahead 0 }} \ueaa1{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uea9a{{ .Behind }}{{ end }} "
+          "template": "{{ if .Staging.Changed }} \ueadc {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \ueade {{ .Working.String }}{{ end }}{{ if not (or .Staging.Changed .Working.Changed) }} OK{{ end }}{{ if gt .StashCount 0 }} \uec26 {{ .StashCount }}{{ end }}{{ if gt .Ahead 0 }} \ueaa1{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }} \uea9a{{ .Behind }}{{ end }} "
         },
         {
           "type": "root",
@@ -95,7 +95,7 @@
           "background_templates": [
             "{{ if eq .Mode \"normal\" }}p:lavender{{ end }}"
           ],
-          "template": " {{ if eq .Mode \"normal\" }}\uf27d{{ else }}\uf044{{ end }} "
+          "template": " {{ if eq .Mode \"normal\" }}N{{ else }}I{{ end }} "
         }
       ]
     }
